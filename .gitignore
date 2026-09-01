@@ -1,0 +1,18 @@
+# Notas internas: traen los enlaces a tu hoja de cálculo y a tus
+# carpetas de Drive. No tienen por qué ser públicas.
+LEEME.md
+assets/LEEME.txt
+
+# El motor de correo vive dentro de Google, no en el sitio.
+# Además trae los IDs de tus archivos.
+google-apps-script.js
+
+# Originales pesados de los que salieron las imágenes finales.
+# La página no los usa.
+assets/BORREGUITA.jpeg
+assets/*-original.*
+
+# Basura de Windows y OneDrive
+Thumbs.db
+desktop.ini
+.DS_Store

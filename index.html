@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit gratis: descubre qué tablas se sabe tu hijo de verdad — Purple Sheep Learning</title>
+<meta name="description" content="Un examen oral de 15 minutos para saber exactamente qué tablas de multiplicar domina tu hijo y cuáles no. Kit gratuito de Purple Sheep Learning, listo para imprimir.">
+
+<!-- Open Graph: así se ve cuando compartes el link en WhatsApp/Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Cuáles tablas se sabe tu hijo de verdad? — Kit gratis">
+<meta property="og:description" content="15 minutos, preguntas en voz alta, y sabes qué tablas domina y cuáles hay que trabajar. Gratis, directo a tu correo.">
+<meta property="og:image" content="assets/portada.jpg">
+<meta property="og:locale" content="es_LA">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --morado:#6d3bbd;
+  --morado-2:#8b5cf6;
+  --morado-osc:#3a1d68;
+  --lavanda:#f4efff;
+  --lavanda-2:#e9dfff;
+  --crema:#fffdf9;
+  --amarillo:#ffc84a;
+  --amarillo-claro:#ffe9b0;
+  --verde:#25a35f;
+  --texto:#2b2440;
+  --texto-suave:#6b6482;
+  --borde:#e6ddf5;
+  --sombra:0 4px 24px rgba(61,31,107,.08);
+  --sombra-alta:0 14px 44px rgba(61,31,107,.18);
+  --radio:18px;
+  --ancho:1100px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--texto);background:var(--crema);
+  line-height:1.65;font-size:17px;overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Fredoka','Nunito',sans-serif;line-height:1.2;font-weight:600}
+img{max-width:100%;display:block}
+a{color:var(--morado)}
+.wrap{width:100%;max-width:var(--ancho);margin:0 auto;padding:0 22px}
+.centro{text-align:center}
+.seccion{padding:72px 0}
+.seccion h2{font-size:clamp(27px,3.6vw,38px);margin-bottom:14px}
+.seccion .bajada{color:var(--texto-suave);font-size:18px;max-width:40em;margin:0 auto 42px}
+.etiqueta{
+  display:inline-block;background:var(--lavanda-2);color:var(--morado);
+  font-size:13px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;
+  padding:7px 16px;border-radius:100px;margin-bottom:16px;
+}
+
+/* ---------- BARRA SUPERIOR ---------- */
+.topbar{
+  background:var(--morado-osc);color:#fff;text-align:center;
+  padding:11px 18px;font-size:14.5px;font-weight:600;letter-spacing:.2px;
+}
+.topbar strong{color:var(--amarillo)}
+
+/* ---------- PORTADA ---------- */
+.hero{
+  background:linear-gradient(160deg,#3a1d68 0%,#5a2fa3 52%,#7c4bd6 100%);
+  color:#fff;padding:56px 0 68px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background:radial-gradient(circle at 82% 12%,rgba(255,200,74,.28),transparent 52%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.hero .etiqueta{
+  background:rgba(255,200,74,.18);border:1px solid rgba(255,233,176,.45);
+  color:var(--amarillo-claro);
+}
+.hero h1{font-size:clamp(32px,4.9vw,50px);color:#fff;margin-bottom:18px;letter-spacing:-.4px}
+.hero h1 em{font-style:normal;color:var(--amarillo)}
+.hero p.lead{font-size:clamp(17px,2.1vw,19.5px);color:#e4d9f7;margin-bottom:24px;max-width:34em}
+.lista-hero{list-style:none;margin-bottom:26px}
+.lista-hero li{
+  display:flex;gap:11px;align-items:flex-start;margin-bottom:11px;
+  color:#efe8fb;font-size:16.5px;font-weight:600;
+}
+.lista-hero li .tic{
+  flex:0 0 24px;height:24px;border-radius:50%;background:rgba(255,200,74,.22);
+  color:var(--amarillo);display:grid;place-items:center;font-size:14px;margin-top:2px;
+}
+.hero-nota{font-size:14.5px;color:#c8b6e8;font-weight:600}
+
+/* ---------- TARJETA DE FORMULARIO ---------- */
+.tarjeta-form{
+  background:#fff;border-radius:22px;padding:30px 28px;box-shadow:var(--sombra-alta);
+  color:var(--texto);border:1px solid rgba(255,255,255,.6);
+}
+.tarjeta-form h3{font-size:24px;margin-bottom:8px;color:var(--morado-osc)}
+.tarjeta-form .intro{font-size:15.5px;color:var(--texto-suave);margin-bottom:20px}
+.campo{margin-bottom:14px}
+.campo label{
+  display:block;font-size:13.5px;font-weight:800;margin-bottom:6px;
+  color:var(--morado-osc);letter-spacing:.2px;
+}
+.campo label .opt{font-weight:600;color:var(--texto-suave)}
+.campo input,.campo select{
+  width:100%;font-family:inherit;font-size:16.5px;color:var(--texto);
+  padding:13px 15px;border:1.5px solid var(--borde);border-radius:12px;
+  background:#fdfcff;transition:border-color .15s ease,box-shadow .15s ease;
+}
+.campo input:focus,.campo select:focus{
+  outline:none;border-color:var(--morado-2);box-shadow:0 0 0 4px rgba(139,92,246,.15);
+}
+.campo.mal input,.campo.mal select{border-color:#d9455f;background:#fff5f6}
+.campo .aviso-error{display:none;color:#c02c46;font-size:13.5px;font-weight:700;margin-top:5px}
+.campo.mal .aviso-error{display:block}
+.trampa{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+.legal{font-size:13px;color:var(--texto-suave);margin-top:12px;text-align:center;line-height:1.5}
+
+/* ---------- BOTONES ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Fredoka','Nunito',sans-serif;font-size:17.5px;font-weight:600;
+  border:none;cursor:pointer;padding:16px 30px;border-radius:100px;text-decoration:none;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-principal{
+  background:linear-gradient(135deg,#7c3fd4,#a06bf0);color:#fff;width:100%;
+  box-shadow:0 8px 22px rgba(109,59,189,.35);
+}
+.btn-principal:hover{box-shadow:0 12px 30px rgba(109,59,189,.45)}
+.btn-principal[disabled]{opacity:.65;cursor:wait;transform:none}
+.btn-amarillo{background:var(--amarillo);color:#4a3200;box-shadow:0 8px 22px rgba(255,200,74,.4)}
+.btn-verde{background:var(--verde);color:#fff;box-shadow:0 8px 22px rgba(37,163,95,.32)}
+
+/* ---------- ESTADO DE ÉXITO ---------- */
+.exito{display:none;text-align:center;padding:6px 0}
+.exito.visible{display:block}
+.exito .emoji{font-size:52px;line-height:1;margin-bottom:12px}
+.exito h3{font-size:25px;color:var(--morado-osc);margin-bottom:10px}
+.exito p{color:var(--texto-suave);font-size:16px;margin-bottom:14px}
+.exito .correo-destino{
+  display:inline-block;background:var(--lavanda);color:var(--morado-osc);
+  font-weight:800;padding:8px 16px;border-radius:100px;margin-bottom:14px;
+  word-break:break-all;font-size:15.5px;
+}
+.aviso-spam{
+  background:var(--amarillo-claro);border:1px solid #f0d383;color:#6b4c00;
+  border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600;
+  text-align:left;margin-bottom:16px;
+}
+/* Oferta del producto dentro de la pantalla de gracias */
+.siguiente-paso{
+  display:none;background:var(--lavanda);border:1.5px solid var(--lavanda-2);
+  border-radius:16px;padding:20px;text-align:left;margin-bottom:16px;
+}
+.siguiente-paso.visible{display:block}
+.siguiente-paso .cintillo{
+  font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  color:var(--morado);margin-bottom:6px;
+}
+.siguiente-paso h4{font-family:'Fredoka',sans-serif;font-size:19px;color:var(--morado-osc);margin-bottom:6px;font-weight:600}
+.siguiente-paso p{font-size:15px;color:var(--texto-suave);margin-bottom:14px}
+.siguiente-paso .btn{width:100%;font-size:16.5px;padding:14px 22px}
+
+/* Aviso de configuración pendiente — solo lo ves tú, mientras falte algo */
+.aviso-config{
+  display:none;background:#fff4d6;border:1.5px dashed #e0a800;color:#7a5200;
+  border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:16px;text-align:left;
+}
+.aviso-config.visible{display:block}
+.aviso-config strong{display:block;margin-bottom:6px;font-size:14.5px}
+.aviso-config ul{margin:0;padding-left:20px}
+.aviso-config li{margin-bottom:3px;font-weight:600}
+
+/* ---------- QUÉ TRAE EL KIT ---------- */
+.grid-recursos{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px}
+.recurso{
+  background:#fff;border:1.5px solid var(--borde);border-radius:var(--radio);
+  padding:26px 24px;box-shadow:var(--sombra);transition:transform .2s ease,box-shadow .2s ease;
+}
+.recurso:hover{transform:translateY(-4px);box-shadow:var(--sombra-alta)}
+.recurso .ico{
+  width:52px;height:52px;border-radius:15px;background:var(--lavanda);
+  display:grid;place-items:center;font-size:26px;margin-bottom:14px;
+}
+.recurso h3{font-size:19.5px;margin-bottom:7px;color:var(--morado-osc)}
+.recurso p{font-size:15.5px;color:var(--texto-suave)}
+
+/* ---------- PARA QUIÉN ---------- */
+.bloque-lavanda{background:var(--lavanda)}
+.grid-tres{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.publico{background:#fff;border-radius:var(--radio);padding:28px 24px;box-shadow:var(--sombra)}
+.publico .ico{font-size:34px;margin-bottom:12px}
+.publico h3{font-size:20px;margin-bottom:8px;color:var(--morado-osc)}
+.publico p{font-size:15.5px;color:var(--texto-suave)}
+
+/* ---------- PASOS ---------- */
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.paso .num{
+  width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#7c3fd4,#a06bf0);
+  color:#fff;display:grid;place-items:center;font-family:'Fredoka',sans-serif;
+  font-size:21px;font-weight:600;margin-bottom:14px;box-shadow:0 6px 16px rgba(109,59,189,.3);
+}
+.paso h3{font-size:19.5px;margin-bottom:7px;color:var(--morado-osc)}
+.paso p{font-size:15.5px;color:var(--texto-suave)}
+
+/* ---------- EL PRODUCTO DE PAGO ---------- */
+.seccion-producto{display:none}
+.seccion-producto.visible{display:block}
+.caja-producto{
+  background:#fff;border:2px solid var(--lavanda-2);border-radius:24px;
+  box-shadow:var(--sombra-alta);overflow:hidden;max-width:880px;margin:0 auto;
+  display:grid;grid-template-columns:1.25fr .75fr;
+}
+.caja-producto .cuerpo{padding:36px 34px;display:flow-root}
+.img-producto{
+  width:100%;max-width:220px;border-radius:14px;margin:0 auto 18px;
+  box-shadow:var(--sombra);
+}
+@media(min-width:881px){
+  .img-producto{float:left;margin:0 24px 14px 0}
+}
+.caja-producto h3{font-size:clamp(22px,2.8vw,27px);color:var(--morado-osc);margin-bottom:10px}
+.caja-producto .desc{color:var(--texto-suave);font-size:16.5px;margin-bottom:20px}
+.lista-incluye{list-style:none}
+.lista-incluye li{
+  display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;
+  font-size:15.5px;font-weight:600;color:var(--texto);
+}
+.lista-incluye .tic{
+  flex:0 0 22px;height:22px;border-radius:50%;background:var(--lavanda);
+  color:var(--morado);display:grid;place-items:center;font-size:12px;margin-top:2px;
+}
+.caja-producto .precio-lado{
+  background:linear-gradient(160deg,#3a1d68,#6d3bbd);color:#fff;
+  padding:36px 26px;display:flex;flex-direction:column;justify-content:center;text-align:center;
+}
+.precio-lado .cifra{
+  font-family:'Fredoka',sans-serif;font-size:52px;line-height:1;font-weight:600;
+}
+.precio-lado .cifra sup{font-size:24px;vertical-align:super;margin-right:2px}
+.precio-lado .divisa{font-size:14px;color:#c9bae6;font-weight:700;letter-spacing:1px;margin-top:6px}
+.precio-lado .unico{font-size:14.5px;color:#e0d3f8;margin:14px 0 18px;font-weight:600}
+.precio-lado .btn{width:100%}
+.precio-lado .seguro{font-size:12.5px;color:#b7a4d9;margin-top:12px;line-height:1.5}
+
+/* ---------- PROMESA ---------- */
+.promesa{
+  background:linear-gradient(160deg,#3a1d68,#6d3bbd);color:#fff;
+  border-radius:26px;padding:48px 40px;text-align:center;position:relative;overflow:hidden;
+}
+.promesa::after{
+  content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background:radial-gradient(circle at 15% 85%,rgba(255,200,74,.25),transparent 55%);
+}
+.promesa>*{position:relative;z-index:2}
+.promesa .oveja{font-size:46px;margin-bottom:14px}
+.promesa blockquote{
+  font-family:'Fredoka',sans-serif;font-size:clamp(20px,2.9vw,28px);
+  line-height:1.42;font-weight:500;max-width:23em;margin:0 auto 18px;
+}
+.promesa cite{font-style:normal;color:#d3c2f0;font-size:15.5px;font-weight:700}
+
+/* ---------- HISTORIA ---------- */
+.historia{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center}
+.historia .foto{
+  background:linear-gradient(150deg,var(--lavanda-2),#fff);border-radius:22px;
+  padding:34px;text-align:center;box-shadow:var(--sombra);border:1.5px solid var(--borde);
+}
+.historia .foto .oveja{font-size:76px;line-height:1;margin-bottom:10px}
+.historia .foto .oveja-img{width:100%;max-width:210px;margin:0 auto 12px}
+.historia .foto strong{display:block;font-family:'Fredoka',sans-serif;font-size:19px;color:var(--morado-osc)}
+.historia .foto span{font-size:14.5px;color:var(--texto-suave);font-weight:600}
+.historia p{margin-bottom:14px;color:var(--texto-suave);font-size:16.5px}
+.historia p strong{color:var(--texto)}
+
+/* ---------- VALORES ---------- */
+.valores{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;margin-top:34px}
+.valor{background:#fff;border:1.5px solid var(--borde);border-radius:15px;padding:20px}
+.valor .ico{font-size:24px;margin-bottom:8px}
+.valor h4{font-family:'Fredoka',sans-serif;font-size:17px;color:var(--morado-osc);margin-bottom:5px;font-weight:600}
+.valor p{font-size:14.5px;color:var(--texto-suave);line-height:1.55}
+
+/* ---------- PREGUNTAS ---------- */
+.faq{max-width:760px;margin:0 auto}
+.faq details{
+  background:#fff;border:1.5px solid var(--borde);border-radius:14px;
+  margin-bottom:12px;overflow:hidden;
+}
+.faq summary{
+  cursor:pointer;list-style:none;padding:18px 22px;font-weight:800;font-size:17px;
+  color:var(--morado-osc);display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Fredoka',sans-serif;font-size:23px;color:var(--morado-2);flex:0 0 auto}
+.faq details[open] summary::after{content:"−"}
+.faq details[open] summary{background:var(--lavanda)}
+.faq .respuesta{padding:4px 22px 20px;color:var(--texto-suave);font-size:16px}
+
+/* ---------- LLAMADO FINAL ---------- */
+.cta-final{background:linear-gradient(160deg,#5a2fa3,#8b5cf6);color:#fff;padding:70px 0}
+.cta-final h2{color:#fff;font-size:clamp(27px,3.6vw,38px);margin-bottom:12px}
+.cta-final .bajada{color:#e0d3f8}
+.cta-final .tarjeta-form{max-width:520px;margin:0 auto}
+
+/* ---------- PIE ---------- */
+.pie{background:var(--morado-osc);color:#c9bae6;padding:46px 0 30px;font-size:15px}
+.pie .marca{
+  font-family:'Fredoka',sans-serif;font-size:22px;color:#fff;
+  display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:10px;font-weight:600;
+}
+.pie .lema{text-align:center;max-width:34em;margin:0 auto 22px;color:#b7a4d9}
+.redes{display:flex;gap:12px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+.redes a{
+  width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);
+  display:grid;place-items:center;transition:background .18s ease,transform .18s ease;
+}
+.redes a:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.redes svg{width:21px;height:21px;fill:#fff}
+.pie-legal{
+  text-align:center;font-size:13.5px;color:#9b88c2;border-top:1px solid rgba(255,255,255,.12);
+  padding-top:20px;
+}
+.pie-legal a{color:#d9caf5;text-decoration:none;font-weight:700}
+.pie-legal a:hover{text-decoration:underline}
+
+/* ---------- BOTÓN FLOTANTE DE WHATSAPP ---------- */
+.wa-flota{
+  position:fixed;right:18px;bottom:18px;z-index:60;
+  width:58px;height:58px;border-radius:50%;background:#25d366;
+  display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.45);
+  transition:transform .18s ease;
+}
+.wa-flota:hover{transform:scale(1.07)}
+.wa-flota svg{width:31px;height:31px;fill:#fff}
+
+/* ---------- MÓVIL ---------- */
+@media(max-width:880px){
+  .hero-grid,.historia{grid-template-columns:1fr;gap:34px}
+  .caja-producto{grid-template-columns:1fr}
+  .caja-producto .precio-lado{order:-1;padding:28px 22px}
+  .caja-producto .cuerpo{padding:28px 24px}
+  .hero{padding:40px 0 52px}
+  .seccion{padding:56px 0}
+  .promesa{padding:38px 24px}
+  body{font-size:16.5px}
+}
+@media(max-width:520px){
+  .wrap{padding:0 17px}
+  .tarjeta-form{padding:24px 20px}
+  .btn{font-size:16.5px;padding:15px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ====================== BARRA SUPERIOR ====================== -->
+<div class="topbar"><span id="topbar-texto"></span></div>
+
+<!-- ====================== PORTADA ====================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div>
+        <span class="etiqueta">Para mamás, papás y docentes</span>
+        <h1 id="hero-titulo">¿Cuáles tablas se sabe tu hijo <em>de verdad</em>?</h1>
+        <p class="lead" id="hero-lead">
+          En 15 minutos, preguntando en voz alta, sabes <strong>qué porcentaje
+          de las tablas domina</strong>. Sin hojas que llenar, sin calificación,
+          y sin que la tarde termine en pleito y lágrimas.
+        </p>
+
+        <ul class="lista-hero">
+          <li><span class="tic">✓</span><span>Tú preguntas en voz alta, él solo contesta</span></li>
+          <li><span class="tic">✓</span><span>Al terminar tienes un número claro: 40%, 65%, el que sea</span></li>
+          <li><span class="tic">✓</span><span>Y sabes exactamente cuáles tablas le faltan para subirlo</span></li>
+        </ul>
+
+        <p class="hero-nota" id="hero-nota"></p>
+      </div>
+
+      <!-- ---------- FORMULARIO PRINCIPAL ---------- -->
+      <div class="tarjeta-form">
+        <h3 class="form-titulo"></h3>
+        <p class="intro form-intro"></p>
+
+        <div class="aviso-config" data-aviso-config></div>
+
+        <form class="form-captura" novalidate>
+          <div class="campo">
+            <label for="n1">Tu nombre</label>
+            <input type="text" id="n1" name="nombre" autocomplete="name" placeholder="Como te gusta que te llamen">
+            <div class="aviso-error">Escribe tu nombre, por favor.</div>
+          </div>
+
+          <div class="campo">
+            <label for="c1">Tu correo</label>
+            <input type="email" id="c1" name="correo" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com">
+            <div class="aviso-error">Revisa el correo: ahí es donde llega el kit.</div>
+          </div>
+
+          <div class="campo">
+            <label for="w1">WhatsApp <span class="opt">(opcional)</span></label>
+            <input type="tel" id="w1" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="Con clave de país. Ej: 52 55 1234 5678">
+            <div class="aviso-error">Ese número no parece completo.</div>
+          </div>
+
+          <div class="campo">
+            <label for="p1">¿Quién va a aplicar la evaluación?</label>
+            <select id="p1" name="perfil">
+              <option value="">Elige una opción</option>
+              <option value="mama-papa">Soy mamá o papá</option>
+              <option value="docente">Soy docente</option>
+              <option value="terapeuta">Soy terapeuta o especialista</option>
+              <option value="otro">Otro</option>
+            </select>
+            <div class="aviso-error">Elige una opción para enviarte lo que más te sirve.</div>
+          </div>
+
+          <div class="campo">
+            <label for="e1">Edad del niño <span class="opt">(opcional)</span></label>
+            <select id="e1" name="edad">
+              <option value="">Elige un rango</option>
+              <option value="7-8">7 a 8 años · Apenas empezando con las tablas</option>
+              <option value="9-10">9 a 10 años · Ya debería sabérselas</option>
+              <option value="11-12">11 a 12 años · Últimos años de primaria</option>
+              <option value="13mas">Ya va en secundaria y todavía no se las sabe</option>
+              <option value="varias">Varios niños, varias edades</option>
+            </select>
+          </div>
+
+          <!-- Campo trampa contra robots: una persona nunca lo ve ni lo llena -->
+          <div class="trampa" aria-hidden="true">
+            <label for="t1">No llenes este campo</label>
+            <input type="text" id="t1" name="apellido2" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="btn btn-principal">
+            <span class="texto-boton"></span>
+          </button>
+
+          <p class="legal">
+            Solo te escribimos con materiales e ideas para acompañar el aprendizaje.
+            Puedes darte de baja cuando quieras.
+          </p>
+        </form>
+
+        <!-- Pantalla de gracias: reemplaza al formulario cuando ya se envió -->
+        <div class="exito" data-exito>
+          <div class="emoji">💜</div>
+          <h3 class="exito-titulo"></h3>
+          <p class="exito-texto"></p>
+          <div class="correo-destino" data-correo-destino></div>
+          <div class="aviso-spam">
+            <strong>¿No lo ves en unos minutos?</strong> Busca en <em>Spam</em>,
+            <em>Promociones</em> o <em>Correo no deseado</em>, y marca el mensaje como
+            “No es spam” para que los siguientes lleguen directo a tu bandeja.
+          </div>
+
+          <!-- El siguiente paso: el producto de pago -->
+          <div class="siguiente-paso" data-siguiente-paso>
+            <div class="cintillo">Y cuando ya sepas dónde está…</div>
+            <h4 data-producto-nombre></h4>
+            <p data-producto-gancho></p>
+            <a class="btn btn-amarillo" data-comprar href="#" target="_blank" rel="noopener"></a>
+          </div>
+
+          <a class="btn btn-verde" data-wa-exito href="#" target="_blank" rel="noopener">
+            <span>Avísanos si no te llegó</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ====================== QUÉ TRAE EL KIT ====================== -->
+<section class="seccion" id="que-recibes">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">Lo que te llega hoy</span>
+      <h2 id="titulo-paquete"></h2>
+      <p class="bajada">
+        Todo listo para imprimir. Sin registrarte en ninguna plataforma,
+        sin instalar nada y sin costo.
+      </p>
+    </div>
+    <div class="grid-recursos" id="grid-recursos"></div>
+  </div>
+</section>
+
+<!-- ====================== CÓMO SE APLICA ====================== -->
+<section class="seccion bloque-lavanda">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">Cómo se aplica</span>
+      <h2>Quince minutos, sentados, como si platicaran</h2>
+      <p class="bajada">
+        Para el niño no es un examen. Es un rato contigo contestando preguntas.
+      </p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <div class="num">1</div>
+        <h3>Imprimes la guía</h3>
+        <p>Son unas cuantas hojas. Tú te quedas con las preguntas; el niño no necesita nada.</p>
+      </div>
+      <div class="paso">
+        <div class="num">2</div>
+        <h3>Le preguntas en voz alta</h3>
+        <p>Vas marcando cuáles contestó rápido, en cuáles dudó y cuáles no supo. Si se traba, pasas a la siguiente sin corregirlo.</p>
+      </div>
+      <div class="paso">
+        <div class="num">3</div>
+        <h3>Sacas su porcentaje</h3>
+        <p>Un número claro de cuánto domina, y la lista de cuáles tablas le faltan para subirlo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PARA QUIÉN ES ====================== -->
+<section class="seccion">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">Para quién es</span>
+      <h2>Si acompañas a un niño mientras aprende, esto es para ti</h2>
+      <p class="bajada">No importa si es tu hijo, tu alumno o tu paciente.</p>
+    </div>
+    <div class="grid-tres">
+      <div class="publico">
+        <div class="ico">👩‍👦</div>
+        <h3>Mamás y papás</h3>
+        <p>
+          Llevas semanas repasando tablas y no sabes si va avanzando. Esto te
+          dice, en una tarde, exactamente cuáles ya son suyas y cuáles faltan.
+        </p>
+      </div>
+      <div class="publico">
+        <div class="ico">🍎</div>
+        <h3>Docentes</h3>
+        <p>
+          Está armado para evaluar a <strong>varios niños a la vez</strong>, no
+          uno por uno. En una sola sesión sacas el porcentaje de todo el grupo y
+          ves quién necesita qué, sin gastar la semana en exámenes.
+        </p>
+      </div>
+      <div class="publico">
+        <div class="ico">🌱</div>
+        <h3>Al que las tablas se le atoraron</h3>
+        <p>
+          Al ser oral, no castiga a quien escribe despacio ni al que se bloquea
+          con la hoja enfrente. Mide lo que el niño <em>sabe</em>, no lo rápido
+          que la llena.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EL PRODUCTO DE PAGO ====================== -->
+<section class="seccion bloque-lavanda seccion-producto" id="producto">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">El siguiente paso</span>
+      <h2>Ya tienes el número. Esto es lo que lo sube.</h2>
+      <p class="bajada">
+        La evaluación te dice en qué porcentaje va. Este material es el camino
+        para subirlo, ordenado y sin que tengas que inventarlo tú cada tarde.
+      </p>
+    </div>
+
+    <div class="caja-producto">
+      <div class="cuerpo">
+        <img class="img-producto" data-producto-imagen alt="" hidden>
+        <h3 data-producto-nombre></h3>
+        <p class="desc" data-producto-desc></p>
+        <ul class="lista-incluye" data-producto-incluye></ul>
+      </div>
+      <div class="precio-lado">
+        <div class="cifra"><sup>$</sup><span data-producto-precio></span></div>
+        <div class="divisa" data-producto-divisa></div>
+        <div class="unico">Pago único · Es tuyo para siempre</div>
+        <a class="btn btn-amarillo" data-comprar href="#" target="_blank" rel="noopener"></a>
+        <div class="seguro" data-producto-aviso></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PROMESA ====================== -->
+<section class="seccion">
+  <div class="wrap">
+    <div class="promesa">
+      <div class="oveja">🐑</div>
+      <blockquote>
+        “Que cada niño que use un material de Purple Sheep Learning termine la
+        actividad sintiéndose un poco más capaz que cuando la comenzó.”
+      </blockquote>
+      <cite>— Nuestra promesa</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== HISTORIA ====================== -->
+<section class="seccion bloque-lavanda">
+  <div class="wrap">
+    <div class="historia">
+      <div class="foto">
+        <!-- El emoji es el respaldo: si la ovejita de verdad no está,
+             la tarjeta se ve igual de bien y nadie nota que falta algo. -->
+        <div class="oveja" data-mascota-respaldo>🐑</div>
+        <img class="oveja-img" data-mascota alt="La ovejita de Purple Sheep Learning" hidden>
+        <strong>Purple Sheep Learning</strong>
+        <span>Aprender con confianza, paso a paso</span>
+      </div>
+      <div>
+        <span class="etiqueta">Por qué existimos</span>
+        <h2>Nació de una niña que necesitaba más ayuda de la que tenía</h2>
+        <p>
+          De niña supe lo que es aprender con dificultades, sentirme perdida y
+          tener que avanzar muchas veces por mi cuenta. Mis padres trabajaban
+          duro e hicieron todo lo que estaba en sus posibilidades.
+        </p>
+        <p>
+          Con el tiempo descubrí que el <strong>TDAH y la dislexia</strong> hacían
+          que mi forma de aprender fuera distinta. Durante años fue un desafío,
+          pero también me enseñó algo importante: <strong>no todos los niños
+          aprenden al mismo ritmo ni de la misma manera</strong>.
+        </p>
+        <p>
+          Por eso esta evaluación es oral. Porque un examen escrito muchas veces
+          no mide lo que el niño sabe: mide qué tan rápido escribe.
+        </p>
+
+        <div class="valores">
+          <div class="valor">
+            <div class="ico">💜</div>
+            <h4>Aprender con confianza</h4>
+            <p>Ningún niño debe sentir vergüenza por aprender a su ritmo.</p>
+          </div>
+          <div class="valor">
+            <div class="ico">🐑</div>
+            <h4>Avanzar paso a paso</h4>
+            <p>Cada gran aprendizaje comienza con un pequeño paso.</p>
+          </div>
+          <div class="valor">
+            <div class="ico">🌱</div>
+            <h4>Acompañar a las familias</h4>
+            <p>Facilitar el aprendizaje en casa y fortalecer el vínculo.</p>
+          </div>
+          <div class="valor">
+            <div class="ico">❤️</div>
+            <h4>Celebrar cada logro</h4>
+            <p>Cada avance, por pequeño que parezca, merece reconocerse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PREGUNTAS ====================== -->
+<section class="seccion">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">Preguntas</span>
+      <h2>Lo que suelen preguntarnos</h2>
+      <p class="bajada">Y si te queda una duda, escríbenos por WhatsApp.</p>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>¿El kit de evaluación de verdad es gratis?</summary>
+        <div class="respuesta">
+          Sí. No pedimos tarjeta ni datos de pago. Te llega a tu correo y es tuyo,
+          lo uses o no. Después te contamos del material para practicar, pero eso
+          lo decides tú.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Por qué preguntar las tablas en voz alta y no en una hoja?</summary>
+        <div class="respuesta">
+          Porque una hoja de tablas mide dos cosas al mismo tiempo: si se las sabe
+          y qué tan rápido escribe. Un niño puede saberse la del 7 perfecto y aun
+          así entregar la hoja a medias porque se le acabó el tiempo. Preguntando
+          en voz alta separas una cosa de la otra — y además así es como se las
+          van a preguntar en la escuela.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Cuánto tarda y qué necesito?</summary>
+        <div class="respuesta">
+          Unos 15 minutos. Solo necesitas imprimir la guía, un lápiz para ir
+          marcando, y un rato tranquilo. El niño no necesita nada: solo contestar.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Y si el porcentaje sale bajo?</summary>
+        <div class="respuesta">
+          Es más común de lo que crees, y no significa que el niño no pueda.
+          Casi siempre significa que estaba practicando todas al mismo tiempo,
+          que es la forma más difícil de aprenderlas. Además, el número casi
+          nunca es tan bajo como se teme: la del 1, 2, 5 y 10 suelen estar
+          dominadas, y esas ya son buena parte del total.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Puedo volver a aplicarlo más adelante?</summary>
+        <div class="respuesta">
+          Sí, y es lo mejor que puedes hacer. Aplícalo hoy y anota el número.
+          Trabajas unas semanas, lo vuelves a aplicar y comparas. Ver que pasó
+          de 40% a 75% le hace al niño más que cualquier regaño — y a ti te
+          quita la duda de si el esfuerzo está sirviendo.
+        </div>
+      </details>
+
+      <details>
+        <summary>Mi hijo ya está grande y todavía no se las sabe. ¿Sirve igual?</summary>
+        <div class="respuesta">
+          Sirve, y es justo para quien más lo necesita. No hay edad para cerrar
+          ese hueco, y arrastrarlo hace que después se atoren las divisiones, las
+          fracciones y todo lo que viene encima. Al ser oral y sin calificación,
+          tampoco lo hace sentir expuesto por ir “atrasado”.
+        </div>
+      </details>
+
+      <details>
+        <summary>Soy maestro. ¿Tengo que evaluarlos uno por uno?</summary>
+        <div class="respuesta">
+          No. El kit está armado para <strong>evaluar a varios niños al mismo
+          tiempo</strong>: tú preguntas en voz alta al grupo y vas registrando en
+          la misma hoja. Al terminar tienes el porcentaje de cada uno y el
+          panorama del salón completo, en una sola sesión.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Puedo imprimirlo las veces que quiera?</summary>
+        <div class="respuesta">
+          Sí, las que necesites, para tus alumnos o tus hijos. Lo único que te
+          pedimos es que no lo revendas ni lo publiques como propio: si alguien
+          más lo quiere, mándale el link de esta página.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Me van a llenar el correo de publicidad?</summary>
+        <div class="respuesta">
+          No. Escribimos cuando tenemos algo que de verdad sirve: un material
+          nuevo, una idea para acompañar la tarea o un aviso importante. En cada
+          correo hay un enlace para darte de baja con un clic.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== LLAMADO FINAL ====================== -->
+<section class="cta-final" id="registro">
+  <div class="wrap">
+    <div class="centro">
+      <h2>Deja de adivinar cuáles le faltan</h2>
+      <p class="bajada">
+        Quince minutos y una conversación. Al terminar sabes exactamente por
+        dónde empezar.
+      </p>
+    </div>
+
+    <div class="tarjeta-form">
+      <h3 class="form-titulo"></h3>
+      <p class="intro form-intro"></p>
+
+      <div class="aviso-config" data-aviso-config></div>
+
+      <form class="form-captura" novalidate>
+        <div class="campo">
+          <label for="n2">Tu nombre</label>
+          <input type="text" id="n2" name="nombre" autocomplete="name" placeholder="Como te gusta que te llamen">
+          <div class="aviso-error">Escribe tu nombre, por favor.</div>
+        </div>
+
+        <div class="campo">
+          <label for="c2">Tu correo</label>
+          <input type="email" id="c2" name="correo" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com">
+          <div class="aviso-error">Revisa el correo: ahí es donde llega el kit.</div>
+        </div>
+
+        <div class="campo">
+          <label for="w2">WhatsApp <span class="opt">(opcional)</span></label>
+          <input type="tel" id="w2" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="Con clave de país. Ej: 52 55 1234 5678">
+          <div class="aviso-error">Ese número no parece completo.</div>
+        </div>
+
+        <div class="campo">
+          <label for="p2">¿Quién va a aplicar la evaluación?</label>
+          <select id="p2" name="perfil">
+            <option value="">Elige una opción</option>
+            <option value="mama-papa">Soy mamá o papá</option>
+            <option value="docente">Soy docente</option>
+            <option value="terapeuta">Soy terapeuta o especialista</option>
+            <option value="otro">Otro</option>
+          </select>
+          <div class="aviso-error">Elige una opción para enviarte lo que más te sirve.</div>
+        </div>
+
+        <div class="campo">
+          <label for="e2">Edad del niño <span class="opt">(opcional)</span></label>
+          <select id="e2" name="edad">
+            <option value="">Elige un rango</option>
+            <option value="7-8">7 a 8 años · Apenas empezando con las tablas</option>
+            <option value="9-10">9 a 10 años · Ya debería sabérselas</option>
+            <option value="11-12">11 a 12 años · Últimos años de primaria</option>
+            <option value="13mas">Ya va en secundaria y todavía no se las sabe</option>
+            <option value="varias">Varios niños, varias edades</option>
+          </select>
+        </div>
+
+        <div class="trampa" aria-hidden="true">
+          <label for="t2">No llenes este campo</label>
+          <input type="text" id="t2" name="apellido2" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-principal">
+          <span class="texto-boton"></span>
+        </button>
+
+        <p class="legal">
+          Solo te escribimos con materiales e ideas para acompañar el aprendizaje.
+          Puedes darte de baja cuando quieras.
+        </p>
+      </form>
+
+      <div class="exito" data-exito>
+        <div class="emoji">💜</div>
+        <h3 class="exito-titulo"></h3>
+        <p class="exito-texto"></p>
+        <div class="correo-destino" data-correo-destino></div>
+        <div class="aviso-spam">
+          <strong>¿No lo ves en unos minutos?</strong> Busca en <em>Spam</em>,
+          <em>Promociones</em> o <em>Correo no deseado</em>, y marca el mensaje como
+          “No es spam” para que los siguientes lleguen directo a tu bandeja.
+        </div>
+
+        <div class="siguiente-paso" data-siguiente-paso>
+          <div class="cintillo">Y cuando ya sepas dónde está…</div>
+          <h4 data-producto-nombre></h4>
+          <p data-producto-gancho></p>
+          <a class="btn btn-amarillo" data-comprar href="#" target="_blank" rel="noopener"></a>
+        </div>
+
+        <a class="btn btn-verde" data-wa-exito href="#" target="_blank" rel="noopener">
+          <span>Avísanos si no te llegó</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PIE ====================== -->
+<footer class="pie">
+  <div class="wrap">
+    <div class="marca">🐑 Purple Sheep Learning</div>
+    <p class="lema">
+      Acompañamos a familias y docentes con materiales claros, prácticos y
+      organizados, para que los niños desarrollen confianza mientras aprenden.
+    </p>
+
+    <div class="redes" id="redes"></div>
+
+    <div class="pie-legal">
+      © <span id="anio"></span> Purple Sheep Learning · Hecho con 💜 para los niños
+      que aprenden a su ritmo<br>
+      ¿Dudas? Escríbenos a <a id="link-correo" href="#">nuestro correo</a>
+      o por <a id="link-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>.
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="wa-flota" id="wa-flota" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.44 9.44 0 0 1-4.8-1.32l-.35-.2-3.57.93.96-3.48-.23-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.2-4.24 9.44-9.44 9.44zM20.5 3.49A11.8 11.8 0 0 0 12.04 0C5.5 0 .18 5.32.18 11.86c0 2.09.55 4.13 1.59 5.93L.08 24l6.36-1.67a11.83 11.83 0 0 0 5.6 1.43h.01c6.53 0 11.85-5.32 11.85-11.86 0-3.17-1.23-6.15-3.4-8.4z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — CAMBIA SOLO ESTOS VALORES
+   ============================================================
+   Todo lo que necesitas tocar de la página está aquí abajo.
+   Si algo no te queda claro, está explicado en LEEME.md
+   ============================================================ */
+const CONFIG = {
+
+  /* ===========================================================
+     1) ¿YA ESTÁ LISTO EL KIT DE EVALUACIÓN?
+
+     true  = MODO ENTREGA. Prometes que llega al correo ahora.
+     false = MODO APARTADO. La página junta contactos y promete
+             enviarlo en cuanto esté listo. Los registros quedan
+             marcados en la hoja como "APARTÓ — enviar".
+
+     Úsalo si quieres empezar a mandar tráfico antes de tener
+     los archivos terminados. Al cambiarlo a true, toda la
+     página se readapta sola.
+     =========================================================== */
+  kitListo: true,
+
+  /* ---------- 2) EL KIT GRATUITO ----------
+     Cómo se llama y qué trae. Cada bloque entre llaves { } es
+     una tarjeta de la sección "Lo que te llega hoy". Agrega o
+     borra bloques: la página se acomoda sola.                  */
+  nombreKit: 'Kit de Evaluación de Tablas',
+
+  contenidoKit: [
+    {
+      icono: '🗣️',
+      titulo: 'Guía de preguntas orales',
+      texto: 'Todas las tablas, ordenadas y también salteadas. Tú solo vas leyendo en voz alta.'
+    },
+    {
+      icono: '📋',
+      titulo: 'Hoja de registro',
+      texto: 'Para marcar cuáles contestó rápido, en cuáles dudó y cuáles no supo, sin tener que acordarte de nada.'
+    },
+    {
+      icono: '📊',
+      titulo: 'Su porcentaje, ya calculado',
+      texto: 'Cuentas las palomitas y sale el número: cuánto de las tablas domina hoy. Sin sacar cuentas tú.'
+    },
+    {
+      icono: '💡',
+      titulo: 'Por dónde empezar',
+      texto: 'Según lo que salga, en qué orden conviene atacarlas. Sin tecnicismos y sin diagnósticos.'
+    }
+  ],
+
+  /* ---------- 3) A DÓNDE LLEGAN LOS REGISTROS ----------
+     Los datos se mandan a tu Formulario de Google, y de ahí
+     caen solos en tu hoja de cálculo.
+
+     ⚠️ NO borres ni vuelvas a crear las preguntas del formulario.
+     Estos códigos 'entry.N' son el nombre interno de cada una;
+     si borras una pregunta, su código cambia y ese dato deja de
+     guardarse. Cambiar el TÍTULO de una pregunta sí es seguro.
+
+     Los dos últimos (perfil y edad) están vacíos porque tu
+     formulario todavía no tiene esas preguntas. Mientras sigan
+     vacíos, ese dato se guarda dentro de la columna ACCION para
+     que no se pierda. Si algún día agregas las preguntas —
+     agregar es seguro, no rompe nada — pégame sus códigos aquí
+     y cada dato se va a su propia columna.                     */
+  googleForm: {
+    activo: true,
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSegRo1XsoZSfzeKp0zSS5r7gxIl7VFla174C0mPBveCZDq3Pg/formResponse',
+    campos: {
+      nombre:   'entry.1092172310',   // NOMBRE
+      correo:   'entry.743663102',    // CORREO
+      whatsapp: 'entry.1147893339',   // WHATSAPP
+      accion:   'entry.1492829544',   // ACCION
+      monto:    'entry.225947618',    // MONTO
+      perfil:   '',                   // (no existe todavía)
+      edad:     ''                    // (no existe todavía)
+    }
+  },
+
+  /* Tu hoja de cálculo, solo para tenerla anotada. La página no
+     la usa: quien la lee eres tú, y el script que envía los
+     correos vive dentro de ella.                               */
+  hojaDeCalculo: 'https://docs.google.com/spreadsheets/d/1qBnwAtOsWcQH85vN4ycktDCR4fttla1NrTCFxLySCuA/edit',
+
+  /* ---------- 4) EL PRODUCTO DE PAGO ----------
+     Es lo que ofreces DESPUÉS de entregar el kit gratis.
+
+     ⚠️ IMPORTANTE: mientras "nombre" o "linkPago" estén vacíos,
+     toda la sección del producto queda OCULTA para el visitante.
+     Nadie ve un botón roto ni un precio sin producto.
+
+     El linkPago se saca del panel de tu plataforma de cobro
+     (Mercado Pago > Cobrar > Link de pago, o Stripe > Payment
+     Links, o tu PayPal.me). Ábrelo antes de pegarlo y confirma
+     que muestra $59 y el nombre correcto de quien cobra.        */
+  producto: {
+    /* Escrito EXACTAMENTE igual que en Mercado Pago y en el gráfico.
+       Si algún día cambias uno, cambia los tres: el comprador ve el
+       anuncio, esta página y el checkout, uno tras otro.          */
+    nombre:      'MegaPack Aprende las Tablas de Multiplicar sin Llorar',
+    gancho:      'El camino completo para subir ese porcentaje: una tabla a la vez, sin que la tarde acabe en pleito.',
+    descripcion: '19 PDFs imprimibles para trabajar las tablas en casa o en el salón: ' +
+                 'una tabla a la vez, con juegos y práctica corta, en el orden que sí ' +
+                 'funciona. Sin hojas interminables y sin llanto.',
+
+    /* Imagen del producto. Guárdala en la carpeta assets.
+       Si el archivo no existe, la tarjeta se ve igual de bien
+       sin ella: no queda ningún hueco ni ícono roto.          */
+    imagen: 'assets/megapack.jpg',
+    precio:      '59',
+    divisa:      'MXN',
+    /* Liga de Mercado Pago, verificada el 1 de septiembre de 2026:
+       cobra $59, a nombre de PURPLE SHEEP LEARNING, y no caduca.
+       Acepta tarjeta, efectivo y transferencia SPEI.             */
+    linkPago:    'https://mpago.la/18F4Cz1',
+    textoBoton:  'Lo quiero por $59',
+
+    /* Cada línea es una palomita en la lista del producto. */
+    incluye: [
+      '<strong>19 PDFs imprimibles</strong>, listos para usar hoy',
+      'Una tabla a la vez, en el orden que sí funciona',
+      'Juegos y práctica de 10 minutos, no hojas interminables',
+      'Sirve igual en casa y en el salón',
+      'Tuyo para siempre: lo imprimes las veces que quieras'
+    ],
+
+    /* Aviso chico bajo el botón. Sirve para explicar a nombre de
+       quién aparece el cobro, si no es el mismo de la marca.
+       Déjalo vacío ('') si no hace falta.                       */
+    aviso: 'Pago seguro con Mercado Pago: tarjeta, efectivo o transferencia. ' +
+           'En cuanto se confirme te enviamos el material.'
+  },
+
+  /* ---------- 5) WHATSAPP ----------
+     Link de invitación a tu grupo. Es el que sale en el grupo,
+     en "Info del grupo > Invitar por link".
+     Aparece en el botón verde flotante y, sobre todo, en la
+     pantalla de gracias: ese es el mejor momento para invitar,
+     porque la persona acaba de recibir algo gratis.            */
+  grupoWhatsApp: 'https://chat.whatsapp.com/Kbs7qFBDBOhHw77knI2qqi',
+  nombreGrupo: 'Comunidad Purple Sheep Learning',
+
+  /* Opcional: tu número para chat directo, solo dígitos y con
+     clave de país (México: 52 + 10 dígitos → '5215512345678').
+     Si lo llenas, el botón flotante lleva al chat contigo en vez
+     de al grupo, y el grupo se sigue ofreciendo en la pantalla
+     de gracias. Déjalo vacío si prefieres que todo vaya al grupo. */
+  whatsappDirecto: '',
+  mensajeWhatsApp: 'Hola, vengo de la página de Purple Sheep Learning y quiero preguntarles algo.',
+
+  /* ---------- 5.5) LA OVEJITA ----------
+     Tu mascota, para la tarjeta de "Por qué existimos".
+     Guarda el archivo en la carpeta assets con ese nombre.
+     Si no está, se usa el emoji 🐑 y la tarjeta se ve bien igual:
+     nunca queda el ícono roto de una imagen que no cargó.       */
+  mascota: 'assets/ovejita.png',
+
+  /* ---------- 6) TU CORREO DE CONTACTO ----------
+     Usa el correo de tu dominio, se ve más profesional.         */
+  correoContacto: 'ventas@purplesheeplearning.com',
+
+  /* ---------- 7) REDES SOCIALES ----------
+     Pega la dirección completa. La que dejes vacía no aparece.
+     Ojo: borra todo lo que venga después de un "?" — eso es
+     rastreo de tu propio clic, no parte de la dirección.        */
+  redes: {
+    facebook:  'https://www.facebook.com/profile.php?id=61587978929237',
+    instagram: '',
+    tiktok:    '',
+    youtube:   ''
+  }
+};
+/* ====== FIN DE LA CONFIGURACIÓN ====== */
+
+
+/* ============================================================
+   De aquí para abajo ya no hace falta cambiar nada.
+   ============================================================ */
+
+const $  = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+const poner = (sel, texto) => $$(sel).forEach(el => { el.textContent = texto; });
+
+document.getElementById('anio').textContent = new Date().getFullYear();
+document.getElementById('titulo-paquete').textContent = CONFIG.nombreKit;
+
+/* ---------- Modo entrega / modo apartado ----------
+   Toda la diferencia entre los dos modos vive aquí.        */
+const TEXTOS = {
+  listo: {
+    topbar:      '💜 Evaluación de tablas <strong>100% gratuita</strong> &nbsp;·&nbsp; Te llega a tu correo',
+    heroNota:    'Sin costo · Sin tarjeta · Llega a tu correo en minutos',
+    formTitulo:  'Recibe el kit gratis',
+    formIntro:   'Déjanos tus datos y te lo enviamos a tu correo ahora mismo.',
+    boton:       'Enviar mi kit de evaluación',
+    exitoTitulo: '¡Listo! Revisa tu correo',
+    exitoTexto:  'Acabamos de enviar tu kit de evaluación a:'
+  },
+  apartado: {
+    topbar:      '💜 Evaluación de tablas <strong>100% gratuita</strong> &nbsp;·&nbsp; Últimos detalles',
+    heroNota:    'Sin costo · Sin tarjeta · Te avisamos apenas esté listo',
+    formTitulo:  'Aparta tu kit gratis',
+    formIntro:   'El kit está en los últimos detalles. Déjanos tus datos y te lo enviamos en cuanto esté listo, sin costo.',
+    boton:       'Apartar mi kit gratis',
+    exitoTitulo: '¡Listo! Tu kit está apartado',
+    exitoTexto:  'En cuanto esté terminado te lo enviamos a:'
+  }
+};
+
+const modo = CONFIG.kitListo ? TEXTOS.listo : TEXTOS.apartado;
+document.getElementById('topbar-texto').innerHTML = modo.topbar;
+document.getElementById('hero-nota').textContent  = modo.heroNota;
+poner('.form-titulo',  modo.formTitulo);
+poner('.form-intro',   modo.formIntro);
+poner('.texto-boton',  modo.boton);
+poner('.exito-titulo', modo.exitoTitulo);
+poner('.exito-texto',  modo.exitoTexto);
+
+/* ---------- Tarjetas del kit ---------- */
+document.getElementById('grid-recursos').innerHTML = CONFIG.contenidoKit.map(r => `
+  <article class="recurso">
+    <div class="ico">${r.icono}</div>
+    <h3>${r.titulo}</h3>
+    <p>${r.texto}</p>
+  </article>
+`).join('');
+
+/* ---------- El producto de pago ----------
+   Si le falta el nombre o el link, no se muestra nada.     */
+const P = CONFIG.producto;
+const productoListo = Boolean(P && P.nombre && P.linkPago);
+
+if (productoListo) {
+  poner('[data-producto-nombre]', P.nombre);
+  poner('[data-producto-gancho]', P.gancho);
+  poner('[data-producto-desc]',   P.descripcion || P.gancho);
+  poner('[data-producto-precio]', P.precio);
+  poner('[data-producto-divisa]', 'pesos ' + P.divisa);
+  poner('[data-producto-aviso]',  P.aviso || '');
+
+  $$('[data-producto-incluye]').forEach(ul => {
+    ul.innerHTML = (P.incluye || []).map(linea =>
+      `<li><span class="tic">✓</span><span>${linea}</span></li>`
+    ).join('');
+  });
+
+  /* La imagen solo aparece si el archivo existe de verdad.
+     Si no está, la tarjeta se ve igual de bien sin ella:
+     nunca queda el ícono roto de una imagen que no cargó. */
+  if (P.imagen) {
+    $$('[data-producto-imagen]').forEach(img => {
+      img.alt = P.nombre;
+      img.onload  = () => { img.hidden = false; };
+      img.onerror = () => { img.remove(); };
+      img.src = P.imagen;
+    });
+  }
+
+  $$('[data-comprar]').forEach(a => {
+    a.href = P.linkPago;
+    a.textContent = P.textoBoton || ('Lo quiero por $' + P.precio);
+    a.addEventListener('click', () => {
+      registrar({ accion: 'click_producto', monto: P.precio });
+    });
+  });
+
+  document.getElementById('producto').classList.add('visible');
+  $$('[data-siguiente-paso]').forEach(el => el.classList.add('visible'));
+}
+
+/* ---------- Aviso de lo que falta configurar ----------
+   Solo aparece mientras algo esté pendiente. En cuanto
+   termines de configurar, desaparece solo.                */
+(function avisarPendientes() {
+  const faltan = [];
+  const F = CONFIG.googleForm;
+  if (!F || !F.activo || !F.url) faltan.push('La conexión al Formulario de Google: los registros <strong>no se están guardando</strong>.');
+  if (!P.nombre)   faltan.push('El nombre del producto de pago.');
+  if (!P.linkPago) faltan.push('La liga de pago del producto.');
+  if (!CONFIG.grupoWhatsApp && !CONFIG.whatsappDirecto) faltan.push('El WhatsApp (el botón verde está oculto).');
+
+  if (!faltan.length) return;
+
+  $$('[data-aviso-config]').forEach(caja => {
+    caja.innerHTML =
+      '<strong>⚠️ Falta configurar (esto lo ves tú y también los visitantes):</strong>' +
+      '<ul>' + faltan.map(f => '<li>' + f + '</li>').join('') + '</ul>';
+    caja.classList.add('visible');
+  });
+})();
+
+/* ---------- La ovejita ----------
+   Solo reemplaza al emoji si el archivo existe de verdad.
+   Si falta o falla, el emoji se queda y nadie nota nada.   */
+if (CONFIG.mascota) {
+  const oveja = $('[data-mascota]');
+  const respaldo = $('[data-mascota-respaldo]');
+
+  if (oveja) {
+    oveja.onload = () => {
+      oveja.hidden = false;
+      if (respaldo) respaldo.hidden = true;
+    };
+    oveja.onerror = () => oveja.remove();
+    oveja.src = CONFIG.mascota;
+  }
+}
+
+/* ---------- Enlaces de WhatsApp y correo ---------- */
+const chatDirecto = CONFIG.whatsappDirecto
+  ? 'https://wa.me/' + CONFIG.whatsappDirecto.replace(/\D/g, '') +
+    '?text=' + encodeURIComponent(CONFIG.mensajeWhatsApp)
+  : '';
+
+/* El botón flotante lleva al chat directo si hay número; si no, al grupo. */
+const destinoFlotante = chatDirecto || CONFIG.grupoWhatsApp || '';
+const botonFlotante = document.getElementById('wa-flota');
+
+if (destinoFlotante) {
+  botonFlotante.href = destinoFlotante;
+  botonFlotante.setAttribute('aria-label',
+    chatDirecto ? 'Escríbenos por WhatsApp' : 'Únete a la comunidad en WhatsApp');
+  document.getElementById('link-wa').href = destinoFlotante;
+} else {
+  botonFlotante.style.display = 'none';
+  document.getElementById('link-wa').href = 'mailto:' + CONFIG.correoContacto;
+}
+
+/* En la pantalla de gracias, el botón verde invita al grupo.
+   Es el mejor momento de toda la visita: acaban de recibir algo. */
+$$('[data-wa-exito]').forEach(boton => {
+  const etiqueta = boton.querySelector('span');
+
+  if (CONFIG.grupoWhatsApp) {
+    boton.href = CONFIG.grupoWhatsApp;
+    etiqueta.textContent = 'Únete a la comunidad';
+    boton.addEventListener('click', () => registrar({ accion: 'entro_al_grupo' }));
+  } else if (chatDirecto) {
+    boton.href = chatDirecto;
+    etiqueta.textContent = 'Escríbenos por WhatsApp';
+  } else {
+    boton.href = 'mailto:' + CONFIG.correoContacto;
+    etiqueta.textContent = 'Escríbenos por correo';
+  }
+
+  /* Debajo del botón, la salida para quien no recibió el correo. */
+  const ayuda = document.createElement('p');
+  ayuda.className = 'legal';
+  ayuda.innerHTML = '¿De plano no te llegó? Escríbenos a ' +
+    '<a href="mailto:' + CONFIG.correoContacto + '">' + CONFIG.correoContacto + '</a> ' +
+    'y te lo mandamos a mano.';
+  boton.insertAdjacentElement('afterend', ayuda);
+});
+document.getElementById('link-correo').href = 'mailto:' + CONFIG.correoContacto;
+document.getElementById('link-correo').textContent = CONFIG.correoContacto;
+
+/* ---------- Redes sociales ---------- */
+const ICONOS_RED = {
+  facebook:  '<path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/>',
+  instagram: '<path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.39C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.39 2.12.66.66 1.33 1.08 2.12 1.39.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.39.66-.66 1.08-1.33 1.39-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.39-2.12C21.32 1.35 20.65.93 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>',
+  tiktok:    '<path d="M16.6 5.82a4.28 4.28 0 0 1-1.01-2.82h-3.1v12.4a2.6 2.6 0 0 1-2.6 2.5 2.6 2.6 0 0 1 0-5.2c.27 0 .53.04.78.12v-3.2a5.79 5.79 0 0 0-.78-.06 5.72 5.72 0 1 0 5.72 5.72V9.01a7.3 7.3 0 0 0 4.28 1.37V7.28a4.28 4.28 0 0 1-3.29-1.46z"/>',
+  youtube:   '<path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>'
+};
+const NOMBRES_RED = {
+  facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube'
+};
+
+const contenedorRedes = document.getElementById('redes');
+contenedorRedes.innerHTML = Object.keys(ICONOS_RED)
+  .filter(red => CONFIG.redes[red])
+  .map(red => `
+    <a href="${CONFIG.redes[red]}" target="_blank" rel="noopener" aria-label="${NOMBRES_RED[red]}">
+      <svg viewBox="0 0 24 24" aria-hidden="true">${ICONOS_RED[red]}</svg>
+    </a>
+  `).join('');
+if (!contenedorRedes.innerHTML.trim()) contenedorRedes.style.display = 'none';
+
+/* ---------- Validación ---------- */
+function marcarError(input, hayError) {
+  const campo = input.closest('.campo');
+  if (campo) campo.classList.toggle('mal', hayError);
+}
+
+function correoValido(valor) {
+  return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(valor.trim());
+}
+
+function telefonoValido(valor) {
+  const digitos = valor.replace(/\D/g, '');
+  return digitos.length === 0 || digitos.length >= 10;
+}
+
+function validar(form) {
+  const errores = [
+    [form.nombre,   form.nombre.value.trim().length < 2],
+    [form.correo,   !correoValido(form.correo.value)],
+    [form.whatsapp, !telefonoValido(form.whatsapp.value)],
+    [form.perfil,   form.perfil.value === '']
+  ];
+
+  errores.forEach(([campo, mal]) => marcarError(campo, mal));
+
+  const primerError = errores.find(([, mal]) => mal);
+  if (primerError) {
+    primerError[0].focus();
+    return false;
+  }
+  return true;
+}
+
+/* ---------- Envío ----------
+   Se manda con "no-cors": el navegador no nos deja leer la
+   respuesta de Google, pero el dato sí llega. Por eso, si el
+   envío no truena, damos el registro por bueno.              */
+function origenVisitante() {
+  const params = new URLSearchParams(location.search);
+  return params.get('utm_source') || params.get('origen') || document.referrer || 'directo';
+}
+
+/* Arma el texto de la columna ACCION. Si el formulario todavía
+   no tiene preguntas para el perfil y la edad, se guardan aquí
+   mismo para que el dato no se pierda.                        */
+function textoAccion(datos) {
+  const campos = CONFIG.googleForm.campos;
+  const partes = [ETIQUETAS_ACCION[datos.accion] || datos.accion];
+
+  if (datos.perfil && !campos.perfil) partes.push(ETIQUETAS_PERFIL[datos.perfil] || datos.perfil);
+  if (datos.edad   && !campos.edad)   partes.push(ETIQUETAS_EDAD[datos.edad]     || datos.edad);
+  partes.push('desde: ' + origenVisitante());
+
+  return partes.join(' · ');
+}
+
+const ETIQUETAS_ACCION = {
+  kit_gratis:     'Pidió el kit gratis',
+  kit_apartado:   '⏳ APARTÓ — enviar',
+  click_producto: 'Abrió la liga de pago',
+  entro_al_grupo: 'Entró al grupo de WhatsApp'
+};
+const ETIQUETAS_PERFIL = {
+  'mama-papa': 'Mamá o papá',
+  'docente':   'Docente',
+  'terapeuta': 'Terapeuta',
+  'otro':      'Otro'
+};
+const ETIQUETAS_EDAD = {
+  '7-8':    '7 a 8 años',
+  '9-10':   '9 a 10 años',
+  '11-12':  '11 a 12 años',
+  '13mas':  'Secundaria y aún no las sabe',
+  'varias': 'Varias edades'
+};
+
+/* Manda los datos al Formulario de Google.
+   Va con "no-cors": el navegador no nos deja leer la respuesta
+   de Google, pero el dato sí llega. Por eso, si el envío no
+   truena, damos el registro por bueno. La comprobación de
+   verdad es abrir la hoja de cálculo y ver la fila.           */
+async function registrar(datos) {
+  const F = CONFIG.googleForm;
+
+  if (!F || !F.activo || !F.url) {
+    console.warn('Purple Sheep: el formulario no está configurado. No se guardó nada.', datos);
+    return;
+  }
+
+  const cuerpo = new FormData();
+  const poneCampo = (clave, valor) => {
+    if (F.campos[clave] && valor) cuerpo.append(F.campos[clave], valor);
+  };
+
+  poneCampo('nombre',   datos.nombre);
+  poneCampo('correo',   datos.correo);
+  poneCampo('whatsapp', datos.whatsapp);
+  poneCampo('perfil',   ETIQUETAS_PERFIL[datos.perfil] || datos.perfil);
+  poneCampo('edad',     ETIQUETAS_EDAD[datos.edad] || datos.edad);
+  poneCampo('monto',    datos.monto ? '$' + datos.monto : '');
+  poneCampo('accion',   textoAccion(datos));
+
+  await fetch(F.url, { method: 'POST', mode: 'no-cors', body: cuerpo });
+}
+
+$$('.form-captura').forEach(form => {
+  const tarjeta = form.closest('.tarjeta-form');
+  const exito   = tarjeta.querySelector('[data-exito]');
+  const destino = tarjeta.querySelector('[data-correo-destino]');
+  const boton   = form.querySelector('button[type="submit"]');
+  const textoBoton = boton.querySelector('.texto-boton');
+
+  /* Al escribir, se quita el error de ese campo */
+  form.addEventListener('input', e => {
+    if (e.target.closest('.campo.mal')) marcarError(e.target, false);
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    /* Si el campo trampa viene lleno, es un robot: lo ignoramos en silencio */
+    if (form.apellido2.value) return;
+    if (!validar(form)) return;
+
+    const textoOriginal = textoBoton.textContent;
+    boton.disabled = true;
+    textoBoton.textContent = 'Enviando…';
+
+    const datos = {
+      nombre:   form.nombre.value.trim(),
+      correo:   form.correo.value.trim(),
+      whatsapp: form.whatsapp.value.trim(),
+      perfil:   form.perfil.value,
+      edad:     form.edad.value,
+      paquete:  CONFIG.nombreKit,
+      accion:   CONFIG.kitListo ? 'kit_gratis' : 'kit_apartado'
+    };
+
+    try {
+      await registrar(datos);
+    } catch (error) {
+      console.error('Purple Sheep: no se pudo enviar el registro.', error);
+      boton.disabled = false;
+      textoBoton.textContent = textoOriginal;
+      alert('No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo, ' +
+            'o escríbenos por WhatsApp y te mandamos el kit a mano.');
+      return;
+    }
+
+    destino.textContent = datos.correo;
+    form.style.display = 'none';
+    exito.classList.add('visible');
+    exito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+</script>
+</body>
+</html>
