@@ -882,8 +882,7 @@ a{color:var(--morado)}
     <div class="pie-legal">
       © <span id="anio"></span> Purple Sheep Learning · Hecho con 💜 para los niños
       que aprenden a su ritmo<br>
-      ¿Dudas? Escríbenos a <a id="link-correo" href="#">nuestro correo</a>
-      o por <a id="link-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>.
+      <span id="linea-contacto"></span>
     </div>
   </div>
 </footer>
@@ -1053,8 +1052,17 @@ const CONFIG = {
   mascota: 'assets/ovejita.png',
 
   /* ---------- 6) TU CORREO DE CONTACTO ----------
-     Usa el correo de tu dominio, se ve más profesional.         */
-  correoContacto: 'ventas@purplesheeplearning.com',
+     VACÍO A PROPÓSITO. Tu dominio está suspendido, así que
+     ventas@purplesheeplearning.com no recibe nada: publicarlo
+     sería mandar a la gente a un buzón muerto.
+
+     Mientras tanto, todo el contacto se va a tu grupo de
+     WhatsApp, que sí funciona.
+
+     Cuando revivas el dominio, vuelve a escribirlo aquí entre
+     las comillas y el correo reaparece solo en el pie de la
+     página y en la pantalla de gracias.                        */
+  correoContacto: '',
 
   /* ---------- 7) REDES SOCIALES ----------
      Pega la dirección completa. La que dejes vacía no aparece.
@@ -1217,11 +1225,24 @@ if (destinoFlotante) {
   botonFlotante.href = destinoFlotante;
   botonFlotante.setAttribute('aria-label',
     chatDirecto ? 'Escríbenos por WhatsApp' : 'Únete a la comunidad en WhatsApp');
-  document.getElementById('link-wa').href = destinoFlotante;
 } else {
   botonFlotante.style.display = 'none';
-  document.getElementById('link-wa').href = 'mailto:' + CONFIG.correoContacto;
 }
+
+/* Línea de contacto del pie. Se arma con lo que haya configurado:
+   si no hay correo, queda solo WhatsApp, y al revés. Nunca aparece
+   un enlace a un buzón que no existe. */
+(function lineaDeContacto() {
+  const partes = [];
+  if (destinoFlotante) {
+    partes.push('por <a href="' + destinoFlotante + '" target="_blank" rel="noopener">WhatsApp</a>');
+  }
+  if (CONFIG.correoContacto) {
+    partes.push('a <a href="mailto:' + CONFIG.correoContacto + '">' + CONFIG.correoContacto + '</a>');
+  }
+  const linea = document.getElementById('linea-contacto');
+  linea.innerHTML = partes.length ? '¿Dudas? Escríbenos ' + partes.join(' o ') + '.' : '';
+})();
 
 /* En la pantalla de gracias, el botón verde invita al grupo.
    Es el mejor momento de toda la visita: acaban de recibir algo. */
@@ -1235,21 +1256,28 @@ $$('[data-wa-exito]').forEach(boton => {
   } else if (chatDirecto) {
     boton.href = chatDirecto;
     etiqueta.textContent = 'Escríbenos por WhatsApp';
-  } else {
+  } else if (CONFIG.correoContacto) {
     boton.href = 'mailto:' + CONFIG.correoContacto;
     etiqueta.textContent = 'Escríbenos por correo';
+  } else {
+    boton.style.display = 'none';
   }
 
-  /* Debajo del botón, la salida para quien no recibió el correo. */
+  /* Debajo del botón, la salida para quien no recibió el correo.
+     Se apunta a donde sí puedas contestar: al correo si lo hay,
+     y si no, al mismo WhatsApp. */
   const ayuda = document.createElement('p');
   ayuda.className = 'legal';
-  ayuda.innerHTML = '¿De plano no te llegó? Escríbenos a ' +
-    '<a href="mailto:' + CONFIG.correoContacto + '">' + CONFIG.correoContacto + '</a> ' +
-    'y te lo mandamos a mano.';
-  boton.insertAdjacentElement('afterend', ayuda);
+  ayuda.innerHTML = CONFIG.correoContacto
+    ? '¿De plano no te llegó? Escríbenos a ' +
+      '<a href="mailto:' + CONFIG.correoContacto + '">' + CONFIG.correoContacto + '</a> ' +
+      'y te lo mandamos a mano.'
+    : (destinoFlotante
+        ? '¿De plano no te llegó? Escríbenos por WhatsApp con el correo que pusiste ' +
+          'y te lo mandamos a mano.'
+        : '');
+  if (ayuda.innerHTML) boton.insertAdjacentElement('afterend', ayuda);
 });
-document.getElementById('link-correo').href = 'mailto:' + CONFIG.correoContacto;
-document.getElementById('link-correo').textContent = CONFIG.correoContacto;
 
 /* ---------- Redes sociales ---------- */
 const ICONOS_RED = {
