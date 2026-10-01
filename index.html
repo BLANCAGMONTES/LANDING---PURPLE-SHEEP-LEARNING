@@ -209,6 +209,60 @@ a{color:var(--morado)}
 .paso h3{font-size:19.5px;margin-bottom:7px;color:var(--morado-osc)}
 .paso p{font-size:15.5px;color:var(--texto-suave)}
 
+/* ---------- LO QUE DICEN LAS FAMILIAS ---------- */
+.sello-opiniones{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;
+  border:1.5px solid var(--borde);border-radius:100px;padding:9px 18px;
+  font-size:15px;font-weight:800;color:var(--morado-osc);text-decoration:none;
+  box-shadow:var(--sombra);margin-bottom:34px;
+}
+.sello-opiniones .estrellas{color:var(--amarillo);letter-spacing:1px}
+a.sello-opiniones:hover{border-color:var(--morado-2)}
+.testimonio-estrella{
+  background:#fff;border:2px solid var(--lavanda-2);border-radius:24px;
+  box-shadow:var(--sombra-alta);max-width:820px;margin:0 auto 26px;padding:34px 36px;
+  position:relative;
+}
+.testimonio-estrella .cintillo{
+  display:inline-block;background:var(--amarillo-claro);color:#6b4c00;
+  font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;margin-bottom:14px;
+}
+.testimonio-estrella blockquote{
+  font-family:'Fredoka','Nunito',sans-serif;font-size:clamp(18px,2.3vw,22px);
+  line-height:1.5;color:var(--texto);font-weight:500;margin-bottom:14px;
+}
+.testimonio-estrella blockquote strong{color:var(--morado)}
+.grid-testimonios{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.testimonio{
+  background:#fff;border:1.5px solid var(--borde);border-radius:var(--radio);
+  padding:24px 22px;box-shadow:var(--sombra);display:flex;flex-direction:column;
+}
+.testimonio .estrellas{color:var(--amarillo);font-size:17px;letter-spacing:2px;margin-bottom:10px}
+.testimonio blockquote{font-size:15.5px;color:var(--texto);line-height:1.6;flex:1;margin-bottom:12px}
+.quien{font-style:normal;font-size:14.5px;font-weight:800;color:var(--morado-osc)}
+.quien span{font-weight:600;color:var(--texto-suave)}
+.frase-destacada{
+  text-align:center;font-family:'Fredoka','Nunito',sans-serif;
+  font-size:clamp(21px,3vw,28px);color:var(--morado-osc);font-weight:600;
+  max-width:26em;margin:0 auto 26px;line-height:1.35;
+}
+.frase-destacada cite{display:block;font-family:'Nunito',sans-serif;font-style:normal;font-size:15px;color:var(--texto-suave);font-weight:700;margin-top:8px}
+
+/* Bloque de confianza, justo bajo la caja del producto */
+.confianza{
+  max-width:880px;margin:26px auto 0;background:#fff;border:1.5px solid var(--borde);
+  border-radius:20px;padding:28px 30px;box-shadow:var(--sombra);
+}
+.confianza h3{font-size:20px;color:var(--morado-osc);margin-bottom:4px}
+.confianza .sub{color:var(--texto-suave);font-size:15.5px;margin-bottom:18px}
+.confianza .grid-testimonios{gap:16px}
+.confianza .testimonio{background:var(--lavanda);border-color:var(--lavanda-2);box-shadow:none}
+.confianza .entrega{
+  margin-top:18px;background:var(--amarillo-claro);border:1px solid #f0d383;color:#6b4c00;
+  border-radius:12px;padding:12px 16px;font-size:15px;font-weight:700;text-align:center;
+}
+
 /* ---------- EL PRODUCTO DE PAGO ---------- */
 .seccion-producto{display:none}
 .seccion-producto.visible{display:block}
@@ -348,6 +402,8 @@ a{color:var(--morado)}
   .hero{padding:40px 0 52px}
   .seccion{padding:56px 0}
   .promesa{padding:38px 24px}
+  .testimonio-estrella{padding:26px 22px}
+  .confianza{padding:22px 18px}
   body{font-size:16.5px}
 }
 @media(max-width:520px){
@@ -565,6 +621,58 @@ a{color:var(--morado)}
   </div>
 </section>
 
+<!-- ====================== LO QUE DICEN LAS FAMILIAS ======================
+     Reseñas reales de la página de Facebook y del grupo de WhatsApp.
+     Van con nombre e inicial del apellido. Si agregas una nueva,
+     copia un bloque <div class="testimonio"> y cambia el texto.       -->
+<section class="seccion" id="testimonios">
+  <div class="wrap">
+    <div class="centro">
+      <span class="etiqueta">Lo que dicen las familias</span>
+      <h2>Mamás y maestras que ya lo usan</h2>
+      <p class="bajada">Palabras de quienes ya trabajan con el material en casa y en el salón.</p>
+      <a class="sello-opiniones" id="sello-opiniones" target="_blank" rel="noopener">
+        <span class="estrellas">★★★★★</span> Recomendado por el 100 % · 13 opiniones en Facebook
+      </a>
+    </div>
+
+    <div class="testimonio-estrella">
+      <span class="cintillo">🌟 En un mes</span>
+      <blockquote>
+        “Hace un mes inicié con el material de Purple Sheep en casa con mi hijo
+        de 5 años. Hoy ya se sabe sumas con llevadas y restas con prestados.
+        <strong>Lo hace a su ritmo y bien.</strong> Con las pirámides de lectura
+        y el dictado aprendió a escribir respetando los espacios entre palabras.
+        Quiero agradecer por el material.”
+      </blockquote>
+      <cite class="quien">Jare R. <span>· mamá de un niño de 5 años</span></cite>
+    </div>
+
+    <p class="frase-destacada">
+      “Serios, rápidos, cumplidos y un excelente material.”
+      <cite>— Paola L.</cite>
+    </p>
+
+    <div class="grid-testimonios">
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>“Muy buen material, en el momento que haces el pago te envían todo y el material está muy completo, son actividades muy entretenidas para los niños.”</blockquote>
+        <cite class="quien">Arlen G.</cite>
+      </div>
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>“Excelentes materiales, están muy padres y el costo es súper accesible. Los súper recomiendo.”</blockquote>
+        <cite class="quien">NhoeMhy O.</cite>
+      </div>
+      <div class="testimonio">
+        <div class="estrellas">★★★★★</div>
+        <blockquote>“Súper confiable, transferí y recibí inmediatamente el kit de material. Además el material que recibes es muy atractivo y dinámico.”</blockquote>
+        <cite class="quien">Lizy A.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== EL PRODUCTO DE PAGO ====================== -->
 <section class="seccion bloque-lavanda seccion-producto" id="producto">
   <div class="wrap">
@@ -591,6 +699,28 @@ a{color:var(--morado)}
         <a class="btn btn-amarillo" data-comprar href="#" target="_blank" rel="noopener"></a>
         <div class="seguro" data-producto-aviso></div>
       </div>
+    </div>
+
+    <!-- Confianza: la duda más común antes de pagar es "¿y si es estafa?".
+         Estas reseñas la contestan con palabras de clientas reales. -->
+    <div class="confianza">
+      <h3>🔒 ¿Te da desconfianza comprar en línea?</h3>
+      <p class="sub">Es normal. A ellas también les pasó:</p>
+      <div class="grid-testimonios">
+        <div class="testimonio">
+          <blockquote>“La verdad dudé en comprar el mega kit, pensé que eran estafadores pero no me equivoqué: apenas hice el pago y me llegó rápido.”</blockquote>
+          <cite class="quien">Gisely P.</cite>
+        </div>
+        <div class="testimonio">
+          <blockquote>“No es estafa 😅 yo también pensé lo mismo, pero no: realmente te llega todo.”</blockquote>
+          <cite class="quien">Änëly D.</cite>
+        </div>
+        <div class="testimonio">
+          <blockquote>“Transferí y me llegó en 5 min. Material padre para mis alumnos.”</blockquote>
+          <cite class="quien">Lara P. <span>· docente</span></cite>
+        </div>
+      </div>
+      <div class="entrega">📩 Recibes tu material en minutos, en cuanto se confirma tu pago.</div>
     </div>
   </div>
 </section>
@@ -1070,8 +1200,8 @@ const CONFIG = {
      rastreo de tu propio clic, no parte de la dirección.        */
   redes: {
     facebook:  'https://www.facebook.com/profile.php?id=61587978929237',
-    instagram: '',
-    tiktok:    '',
+    instagram: 'https://www.instagram.com/purple_sheep_learning',
+    tiktok:    'https://www.tiktok.com/@purple.sheep.l',
     youtube:   ''
   }
 };
@@ -1299,6 +1429,12 @@ contenedorRedes.innerHTML = Object.keys(ICONOS_RED)
     </a>
   `).join('');
 if (!contenedorRedes.innerHTML.trim()) contenedorRedes.style.display = 'none';
+
+/* El sello de opiniones lleva a las reseñas de Facebook, para que
+   cualquiera pueda comprobar que son reales.                      */
+const sello = document.getElementById('sello-opiniones');
+if (CONFIG.redes.facebook) sello.href = CONFIG.redes.facebook;
+else sello.removeAttribute('target');
 
 /* ---------- Validación ---------- */
 function marcarError(input, hayError) {
