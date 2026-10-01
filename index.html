@@ -117,6 +117,24 @@ a{color:var(--morado)}
 .campo.mal input,.campo.mal select{border-color:#d9455f;background:#fff5f6}
 .campo .aviso-error{display:none;color:#c02c46;font-size:13.5px;font-weight:700;margin-top:5px}
 .campo.mal .aviso-error{display:block}
+/* Pregunta que solo ven los docentes. Oculta hasta que la eligen. */
+.extra-docente{display:none}
+.extra-docente.visible{display:block;animation:aparece .25s ease}
+@keyframes aparece{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.campo label.check-linea{
+  display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  background:var(--lavanda);border:1.5px solid var(--lavanda-2);
+  border-radius:12px;padding:13px 15px;
+  font-size:14.5px;font-weight:600;color:var(--texto);
+  line-height:1.5;letter-spacing:0;text-transform:none;margin:0;
+}
+.campo label.check-linea:hover{border-color:var(--morado-2)}
+.campo label.check-linea input{
+  width:18px;height:18px;flex:0 0 18px;margin-top:2px;padding:0;
+  accent-color:var(--morado);cursor:pointer;
+}
+.campo label.check-linea strong{color:var(--morado)}
+
 .trampa{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
 .legal{font-size:13px;color:var(--texto-suave);margin-top:12px;text-align:center;line-height:1.5}
 
@@ -477,6 +495,14 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
               <option value="otro">Otro</option>
             </select>
             <div class="aviso-error">Elige una opción para enviarte lo que más te sirve.</div>
+          </div>
+
+          <!-- Solo aparece si eligió "Soy docente". Ver .extra-docente -->
+          <div class="campo extra-docente" data-extra-docente>
+            <label class="check-linea" for="pl1">
+              <input type="checkbox" id="pl1" name="planeaciones">
+              <span>Sí, me interesan las <strong>planeaciones didácticas</strong> listas para usar. Avísenme cuando estén.</span>
+            </label>
           </div>
 
           <div class="campo">
@@ -943,6 +969,14 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
             <option value="otro">Otro</option>
           </select>
           <div class="aviso-error">Elige una opción para enviarte lo que más te sirve.</div>
+        </div>
+
+        <!-- Solo aparece si eligió "Soy docente". Ver .extra-docente -->
+        <div class="campo extra-docente" data-extra-docente>
+          <label class="check-linea" for="pl2">
+            <input type="checkbox" id="pl2" name="planeaciones">
+            <span>Sí, me interesan las <strong>planeaciones didácticas</strong> listas para usar. Avísenme cuando estén.</span>
+          </label>
         </div>
 
         <div class="campo">
@@ -1498,6 +1532,11 @@ function textoAccion(datos) {
 
   if (datos.perfil && !campos.perfil) partes.push(ETIQUETAS_PERFIL[datos.perfil] || datos.perfil);
   if (datos.edad   && !campos.edad)   partes.push(ETIQUETAS_EDAD[datos.edad]     || datos.edad);
+
+  /* En mayúsculas a propósito: así lo encuentras de un vistazo en la
+     hoja, o filtras la columna ACCION buscando "PLANEACIONES". */
+  if (datos.planeaciones) partes.push('QUIERE PLANEACIONES');
+
   partes.push('desde: ' + origenVisitante());
 
   return partes.join(' · ');
@@ -1564,6 +1603,18 @@ $$('.form-captura').forEach(form => {
     if (e.target.closest('.campo.mal')) marcarError(e.target, false);
   });
 
+  /* La pregunta de las planeaciones solo se le muestra a quien dice
+     ser docente. Así el formulario no se alarga para la mamá que
+     viene por el kit de su niño — cada campo de más cuesta registros. */
+  const bloqueDocente = form.querySelector('[data-extra-docente]');
+  const mostrarSiEsDocente = () => {
+    const esDocente = form.perfil.value === 'docente';
+    bloqueDocente.classList.toggle('visible', esDocente);
+    if (!esDocente) form.planeaciones.checked = false;
+  };
+  form.perfil.addEventListener('change', mostrarSiEsDocente);
+  mostrarSiEsDocente();
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -1581,6 +1632,7 @@ $$('.form-captura').forEach(form => {
       whatsapp: form.whatsapp.value.trim(),
       perfil:   form.perfil.value,
       edad:     form.edad.value,
+      planeaciones: form.perfil.value === 'docente' && form.planeaciones.checked,
       paquete:  CONFIG.nombreKit,
       accion:   CONFIG.kitListo ? 'kit_gratis' : 'kit_apartado'
     };
