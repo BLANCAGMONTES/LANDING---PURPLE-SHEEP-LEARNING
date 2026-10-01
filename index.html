@@ -1118,7 +1118,7 @@ const CONFIG = {
      El linkPago se saca del panel de tu plataforma de cobro
      (Mercado Pago > Cobrar > Link de pago, o Stripe > Payment
      Links, o tu PayPal.me). Ábrelo antes de pegarlo y confirma
-     que muestra $59 y el nombre correcto de quien cobra.        */
+     que muestra el monto y el nombre correcto de quien cobra.   */
   producto: {
     /* Escrito EXACTAMENTE igual que en Mercado Pago y en el gráfico.
        Si algún día cambias uno, cambia los tres: el comprador ve el
@@ -1133,13 +1133,16 @@ const CONFIG = {
        Si el archivo no existe, la tarjeta se ve igual de bien
        sin ella: no queda ningún hueco ni ícono roto.          */
     imagen: 'assets/megapack.jpg',
-    precio:      '59',
+    precio:      '66',
     divisa:      'MXN',
-    /* Liga de Mercado Pago, verificada el 1 de septiembre de 2026:
-       cobra $59, a nombre de PURPLE SHEEP LEARNING, y no caduca.
-       Acepta tarjeta, efectivo y transferencia SPEI.             */
-    linkPago:    'https://mpago.la/18F4Cz1',
-    textoBoton:  'Lo quiero por $59',
+    /* Liga de Mercado Pago, verificada el 1 de octubre de 2026:
+       cobra $66 (precio con la comisión ya incluida) y no caduca.
+       Acepta tarjeta, efectivo y transferencia SPEI.
+
+       ⚠️ OJO: el cobro aparece a nombre de "En Plenitud de Gozo",
+       no de Purple Sheep Learning. Ver LEEME.md                  */
+    linkPago:    'https://mpago.la/2Xct97s',
+    textoBoton:  'Lo quiero por $66',
 
     /* Cada línea es una palomita en la lista del producto. */
     incluye: [
