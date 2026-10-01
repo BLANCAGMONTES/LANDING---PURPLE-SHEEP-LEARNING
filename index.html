@@ -1156,8 +1156,16 @@ const CONFIG = {
     /* Aviso chico bajo el botón. Sirve para explicar a nombre de
        quién aparece el cobro, si no es el mismo de la marca.
        Déjalo vacío ('') si no hace falta.                       */
+    /* ⏳ TEMPORAL — quitar cuando Mercado Pago cambie el nombre.
+       Mientras el cobro salga a nombre de "En Plenitud de Gozo",
+       conviene decirlo aquí: quien llega al checkout ya lo espera
+       en vez de pensar que se equivocó de página.
+       El día que el nombre cambie, borra la frase de en medio y
+       deja solo la primera y la última.                          */
     aviso: 'Pago seguro con Mercado Pago: tarjeta, efectivo o transferencia. ' +
-           'En cuanto se confirme te enviamos el material.'
+           'El cobro aparece a nombre de En Plenitud de Gozo, que administra ' +
+           'los pagos de Purple Sheep Learning. ' +
+           'Recibes el material en cuanto se confirme.'
   },
 
   /* ---------- 5) WHATSAPP ----------
