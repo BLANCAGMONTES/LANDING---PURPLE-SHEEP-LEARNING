@@ -1109,38 +1109,22 @@ const CONFIG = {
   ],
 
   /* ---------- 3) A DÓNDE LLEGAN LOS REGISTROS ----------
-     Los datos se mandan a tu Formulario de Google, y de ahí
-     caen solos en tu hoja de cálculo.
+     La página le manda los datos directo a tu script de Apps
+     Script, que vive dentro de tu hoja de cálculo. Él los
+     escribe —cada dato en su columna— y manda el kit por correo.
 
-     ⚠️ NO borres ni vuelvas a crear las preguntas del formulario.
-     Estos códigos 'entry.N' son el nombre interno de cada una;
-     si borras una pregunta, su código cambia y ese dato deja de
-     guardarse. Cambiar el TÍTULO de una pregunta sí es seguro.
+     Ya no hay formulario de Google de por medio: menos piezas
+     que se puedan romper, y todo en tu cuenta de Gmail.
 
-     Los dos últimos (perfil y edad) están vacíos porque tu
-     formulario todavía no tiene esas preguntas. Mientras sigan
-     vacíos, ese dato se guarda dentro de la columna ACCION para
-     que no se pierda. Si algún día agregas las preguntas —
-     agregar es seguro, no rompe nada — pégame sus códigos aquí
-     y cada dato se va a su propia columna.                     */
-  googleForm: {
-    activo: true,
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSegRo1XsoZSfzeKp0zSS5r7gxIl7VFla174C0mPBveCZDq3Pg/formResponse',
-    campos: {
-      nombre:   'entry.1092172310',   // NOMBRE
-      correo:   'entry.743663102',    // CORREO
-      whatsapp: 'entry.1147893339',   // WHATSAPP
-      accion:   'entry.1492829544',   // ACCION
-      monto:    'entry.225947618',    // MONTO
-      perfil:   '',                   // (no existe todavía)
-      edad:     ''                    // (no existe todavía)
-    }
-  },
+     ⚠️ Si algún día editas el script, hay que volver a publicarlo
+     para que los cambios apliquen: en Apps Script, Deploy >
+     Manage deployments > el lápiz ✏️ > Version: "New version" >
+     Deploy. La dirección de abajo NO cambia.                   */
+  urlScript: 'https://script.google.com/macros/s/AKfycbzeGlBuAjnua7B6d4WfojeX--q0ZA-iClHSkVXwENqK9lWC8swCLqpny_lCBh3Ouwi3/exec',
 
-  /* Tu hoja de cálculo, solo para tenerla anotada. La página no
-     la usa: quien la lee eres tú, y el script que envía los
-     correos vive dentro de ella.                               */
-  hojaDeCalculo: 'https://docs.google.com/spreadsheets/d/1qBnwAtOsWcQH85vN4ycktDCR4fttla1NrTCFxLySCuA/edit',
+  /* Tu hoja de cálculo, anotada para que la tengas a la mano.
+     La página no la usa: quien la lee eres tú.                 */
+  hojaDeCalculo: 'https://docs.google.com/spreadsheets/d/1VBd35bCNajvCJNdO8l7U6F5oiU8hmhveYto87n3-YtE/edit',
 
   /* ---------- 4) EL PRODUCTO DE PAGO ----------
      Es lo que ofreces DESPUÉS de entregar el kit gratis.
@@ -1353,8 +1337,7 @@ if (productoListo) {
    termines de configurar, desaparece solo.                */
 (function avisarPendientes() {
   const faltan = [];
-  const F = CONFIG.googleForm;
-  if (!F || !F.activo || !F.url) faltan.push('La conexión al Formulario de Google: los registros <strong>no se están guardando</strong>.');
+  if (!CONFIG.urlScript) faltan.push('La conexión al script: los registros <strong>no se están guardando</strong> y el kit <strong>no se envía</strong>.');
   if (!P.nombre)   faltan.push('El nombre del producto de pago.');
   if (!P.linkPago) faltan.push('La liga de pago del producto.');
   if (!CONFIG.grupoWhatsApp && !CONFIG.whatsappDirecto) faltan.push('El WhatsApp (el botón verde está oculto).');
@@ -1526,69 +1509,38 @@ function origenVisitante() {
 /* Arma el texto de la columna ACCION. Si el formulario todavía
    no tiene preguntas para el perfil y la edad, se guardan aquí
    mismo para que el dato no se pierda.                        */
-function textoAccion(datos) {
-  const campos = CONFIG.googleForm.campos;
-  const partes = [ETIQUETAS_ACCION[datos.accion] || datos.accion];
+/* El script se encarga de traducir los códigos a texto legible
+   antes de escribirlos en la hoja, así que aquí solo mandamos
+   los datos en crudo. Cada uno cae en su propia columna.      */
 
-  if (datos.perfil && !campos.perfil) partes.push(ETIQUETAS_PERFIL[datos.perfil] || datos.perfil);
-  if (datos.edad   && !campos.edad)   partes.push(ETIQUETAS_EDAD[datos.edad]     || datos.edad);
-
-  /* En mayúsculas a propósito: así lo encuentras de un vistazo en la
-     hoja, o filtras la columna ACCION buscando "PLANEACIONES". */
-  if (datos.planeaciones) partes.push('QUIERE PLANEACIONES');
-
-  partes.push('desde: ' + origenVisitante());
-
-  return partes.join(' · ');
-}
-
-const ETIQUETAS_ACCION = {
-  kit_gratis:     'Pidió el kit gratis',
-  kit_apartado:   '⏳ APARTÓ — enviar',
-  click_producto: 'Abrió la liga de pago',
-  entro_al_grupo: 'Entró al grupo de WhatsApp'
-};
-const ETIQUETAS_PERFIL = {
-  'mama-papa': 'Mamá o papá',
-  'docente':   'Docente',
-  'terapeuta': 'Terapeuta',
-  'otro':      'Otro'
-};
-const ETIQUETAS_EDAD = {
-  '7-8':    '7 a 8 años',
-  '9-10':   '9 a 10 años',
-  '11-12':  '11 a 12 años',
-  '13mas':  'Secundaria y aún no las sabe',
-  'varias': 'Varias edades'
-};
-
-/* Manda los datos al Formulario de Google.
+/* Manda los datos al script.
    Va con "no-cors": el navegador no nos deja leer la respuesta
    de Google, pero el dato sí llega. Por eso, si el envío no
    truena, damos el registro por bueno. La comprobación de
    verdad es abrir la hoja de cálculo y ver la fila.           */
 async function registrar(datos) {
-  const F = CONFIG.googleForm;
-
-  if (!F || !F.activo || !F.url) {
-    console.warn('Purple Sheep: el formulario no está configurado. No se guardó nada.', datos);
+  if (!CONFIG.urlScript) {
+    console.warn('Purple Sheep: falta la URL del script. No se guardó nada.', datos);
     return;
   }
 
-  const cuerpo = new FormData();
-  const poneCampo = (clave, valor) => {
-    if (F.campos[clave] && valor) cuerpo.append(F.campos[clave], valor);
-  };
+  /* Va con "no-cors": el navegador no nos deja leer la respuesta
+     de Google, pero el dato sí llega. Por eso, si el envío no
+     truena, damos el registro por bueno. La comprobación de
+     verdad es abrir la hoja y ver la fila.
 
-  poneCampo('nombre',   datos.nombre);
-  poneCampo('correo',   datos.correo);
-  poneCampo('whatsapp', datos.whatsapp);
-  poneCampo('perfil',   ETIQUETAS_PERFIL[datos.perfil] || datos.perfil);
-  poneCampo('edad',     ETIQUETAS_EDAD[datos.edad] || datos.edad);
-  poneCampo('monto',    datos.monto ? '$' + datos.monto : '');
-  poneCampo('accion',   textoAccion(datos));
-
-  await fetch(F.url, { method: 'POST', mode: 'no-cors', body: cuerpo });
+     El Content-Type va como texto plano a propósito: así el
+     navegador manda la petición directa, sin preguntar permiso
+     antes — ese permiso Apps Script no lo sabe contestar.      */
+  await fetch(CONFIG.urlScript, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(Object.assign({
+      origen: origenVisitante(),
+      url: location.href
+    }, datos))
+  });
 }
 
 $$('.form-captura').forEach(form => {
