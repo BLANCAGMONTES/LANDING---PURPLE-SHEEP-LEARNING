@@ -286,12 +286,13 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
    teléfono "reducir movimiento".                            */
 @keyframes flotar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-2deg)}}
 @keyframes latido{0%,86%,100%{transform:scale(1)}90%{transform:scale(1.06)}94%{transform:scale(.98)}}
-.historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja,.promesa .oveja-img{animation:flotar 4.5s ease-in-out infinite}
+.historia .foto .oveja,.historia .foto .oveja-img,.promesa .personajes img{animation:flotar 4.5s ease-in-out infinite}
+.promesa .personajes img:nth-child(2){animation-delay:-2.2s}
 .precio-lado .btn{animation:latido 5s ease-in-out 2s infinite}
 .revelar{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .revelar.visto{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja,.promesa .oveja-img,.precio-lado .btn{animation:none}
+  .historia .foto .oveja,.historia .foto .oveja-img,.promesa .personajes img,.precio-lado .btn{animation:none}
   .revelar{opacity:1;transform:none;transition:none}
 }
 
@@ -347,10 +348,9 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
 }
 .promesa>*{position:relative;z-index:2}
 .promesa .oveja{font-size:46px;margin-bottom:14px}
-.promesa .oveja-img{
-  width:120px;margin:0 auto 16px;
-  filter:drop-shadow(0 8px 18px rgba(0,0,0,.25));
-}
+.promesa .personajes{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin-bottom:20px}
+.promesa .personajes img{height:150px;width:auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
+@media(max-width:560px){.promesa .personajes img{height:120px}}
 .promesa blockquote{
   font-family:'Fredoka',sans-serif;font-size:clamp(20px,2.9vw,28px);
   line-height:1.42;font-weight:500;max-width:23em;margin:0 auto 18px;
@@ -777,8 +777,12 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
 <section class="seccion">
   <div class="wrap">
     <div class="promesa">
-      <div class="oveja" data-mascota-respaldo>🐑</div>
-      <img class="oveja-img" data-mascota alt="" hidden>
+      <!-- Lana y Liam, personajes de Purple Sheep Learning.
+           Salen del repo VIDEOS- (purple-sheep-noviembre/public/personajes). -->
+      <div class="personajes">
+        <img src="assets/lana.png" alt="Lana, personaje de Purple Sheep Learning" width="176" height="360">
+        <img src="assets/liam.png" alt="Liam, personaje de Purple Sheep Learning" width="253" height="360">
+      </div>
       <blockquote>
         “Que cada niño que use un material de Purple Sheep Learning termine la
         actividad sintiéndose un poco más capaz que cuando la comenzó.”
@@ -1430,8 +1434,7 @@ if ('IntersectionObserver' in window &&
    Solo reemplaza al emoji si el archivo existe de verdad.
    Si falta o falla, el emoji se queda y nadie nota nada.   */
 if (CONFIG.mascota) {
-  /* Hay una ovejita en la promesa y otra en la historia.
-     Cada una tiene su emoji de respaldo justo al lado. */
+  /* Cada ovejita tiene su emoji de respaldo justo al lado. */
   $$('[data-mascota]').forEach(oveja => {
     const respaldo = oveja.parentElement.querySelector('[data-mascota-respaldo]');
     oveja.onload = () => {
