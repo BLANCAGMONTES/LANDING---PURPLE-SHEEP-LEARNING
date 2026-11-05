@@ -281,6 +281,20 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
   border-radius:12px;padding:12px 16px;font-size:15px;font-weight:700;text-align:center;
 }
 
+/* ---------- MOVIMIENTO ----------
+   Todo es suave y se apaga solo si la persona pidió a su
+   teléfono "reducir movimiento".                            */
+@keyframes flotar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-2deg)}}
+@keyframes latido{0%,86%,100%{transform:scale(1)}90%{transform:scale(1.06)}94%{transform:scale(.98)}}
+.historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja{animation:flotar 4.5s ease-in-out infinite}
+.precio-lado .btn{animation:latido 5s ease-in-out 2s infinite}
+.revelar{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.revelar.visto{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja,.precio-lado .btn{animation:none}
+  .revelar{opacity:1;transform:none;transition:none}
+}
+
 /* ---------- EL PRODUCTO DE PAGO ---------- */
 .seccion-producto{display:none}
 .seccion-producto.visible{display:block}
@@ -294,6 +308,7 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
   width:100%;max-width:220px;border-radius:14px;margin:0 auto 18px;
   box-shadow:var(--sombra);
 }
+.video-producto{display:block;aspect-ratio:9/16;background:var(--lavanda);object-fit:cover}
 @media(min-width:881px){
   .img-producto{float:left;margin:0 24px 14px 0}
 }
@@ -714,6 +729,9 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
     <div class="caja-producto">
       <div class="cuerpo">
         <img class="img-producto" data-producto-imagen alt="" hidden>
+        <video class="img-producto video-producto" data-producto-video
+               muted loop playsinline preload="none" hidden
+               aria-label="Un vistazo al material del MegaPack por dentro"></video>
         <h3 data-producto-nombre></h3>
         <p class="desc" data-producto-desc></p>
         <ul class="lista-incluye" data-producto-incluye></ul>
@@ -1146,7 +1164,15 @@ const CONFIG = {
     /* Imagen del producto. Guárdala en la carpeta assets.
        Si el archivo no existe, la tarjeta se ve igual de bien
        sin ella: no queda ningún hueco ni ícono roto.          */
-    imagen: 'assets/megapack.jpg',
+    imagen: '',
+
+    /* Video corto del material por dentro: sin sonido, con
+       subtítulos, se repite solo. Arranca cuando la persona llega
+       a esta sección, así no gasta datos a quien no baja hasta acá.
+       Salió de los clips del repo VIDEOS- (purple-sheep-clips).
+       Déjalo vacío ('') para quitarlo.                           */
+    video:  'assets/megapack-video.mp4',
+    poster: 'assets/megapack-poster.jpg',
     precio:      '66',
     divisa:      'MXN',
     /* Liga de Mercado Pago (creada el 5 de noviembre de 2026):
@@ -1311,6 +1337,32 @@ if (productoListo) {
     });
   }
 
+  if (P.video) {
+    const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $$('[data-producto-video]').forEach(v => {
+      v.poster = P.poster || '';
+      v.hidden = false;
+      v.onerror = () => v.remove();
+      if (reducir) {
+        /* Sin reproducción automática: la persona le da play si quiere. */
+        v.controls = true;
+        v.preload = 'metadata';
+        v.src = P.video;
+        return;
+      }
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) {
+          if (!v.src) v.src = P.video;
+          v.play().catch(() => { v.controls = true; });
+        } else {
+          v.pause();
+        }
+      }, { threshold: 0.3 }).observe(v);
+    });
+  } else {
+    $$('[data-producto-video]').forEach(v => v.remove());
+  }
+
   $$('[data-comprar]').forEach(a => {
     a.href = P.linkPago;
     a.textContent = P.textoBoton || ('Lo quiero por $' + P.precio);
@@ -1342,6 +1394,32 @@ if (productoListo) {
     caja.classList.add('visible');
   });
 })();
+
+/* ---------- Aparecer al bajar ----------
+   Las tarjetas suben suavemente cuando entran a la pantalla.
+   La clase se pone desde aquí: si algo falla, todo se ve normal. */
+if ('IntersectionObserver' in window &&
+    !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const vigia = new IntersectionObserver(entradas => {
+    entradas.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.add('visto');
+      vigia.unobserve(el);
+      /* Al terminar, se quitan las clases para que el efecto
+         de las tarjetas al pasar el mouse siga funcionando. */
+      setTimeout(() => {
+        el.classList.remove('revelar', 'visto');
+        el.style.transitionDelay = '';
+      }, 1000);
+    });
+  }, { threshold: 0.15 });
+  $$('.paso, .testimonio, .recurso, .caja-producto, .promesa, .historia .foto, .confianza').forEach((el, i) => {
+    el.classList.add('revelar');
+    el.style.transitionDelay = (i % 3) * 0.12 + 's';
+    vigia.observe(el);
+  });
+}
 
 /* ---------- La ovejita ----------
    Solo reemplaza al emoji si el archivo existe de verdad.
