@@ -214,6 +214,14 @@ a{color:var(--morado)}
 .grid-tres{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
 .publico{background:#fff;border-radius:var(--radio);padding:28px 24px;box-shadow:var(--sombra)}
 .publico .ico{font-size:34px;margin-bottom:12px}
+/* Personaje en lugar del ícono. Copo tiene partes de la lana
+   transparentes: solo se ve bien sobre fondo blanco. */
+.publico .personaje-publico{
+  display:block;height:96px;width:auto;margin-bottom:12px;
+  filter:drop-shadow(0 6px 12px rgba(58,29,104,.18));
+}
+.personajes-publico{display:flex;align-items:flex-end;gap:6px}
+.personajes-publico .personaje-publico:nth-child(2){animation-delay:-2.2s}
 .publico h3{font-size:20px;margin-bottom:8px;color:var(--morado-osc)}
 .publico p{font-size:15.5px;color:var(--texto-suave)}
 
@@ -286,12 +294,13 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
    teléfono "reducir movimiento".                            */
 @keyframes flotar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-2deg)}}
 @keyframes latido{0%,86%,100%{transform:scale(1)}90%{transform:scale(1.06)}94%{transform:scale(.98)}}
-.historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja,.promesa .oveja-img{animation:flotar 4.5s ease-in-out infinite}
+.historia .foto .oveja,.historia .foto .oveja-img,.promesa .personajes img,.publico .personaje-publico{animation:flotar 4.5s ease-in-out infinite}
+.promesa .personajes img:nth-child(2){animation-delay:-2.2s}
 .precio-lado .btn{animation:latido 5s ease-in-out 2s infinite}
 .revelar{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .revelar.visto{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .historia .foto .oveja,.historia .foto .oveja-img,.promesa .oveja,.promesa .oveja-img,.precio-lado .btn{animation:none}
+  .historia .foto .oveja,.historia .foto .oveja-img,.promesa .personajes img,.publico .personaje-publico,.precio-lado .btn{animation:none}
   .revelar{opacity:1;transform:none;transition:none}
 }
 
@@ -347,10 +356,9 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
 }
 .promesa>*{position:relative;z-index:2}
 .promesa .oveja{font-size:46px;margin-bottom:14px}
-.promesa .oveja-img{
-  width:120px;margin:0 auto 16px;
-  filter:drop-shadow(0 8px 18px rgba(0,0,0,.25));
-}
+.promesa .personajes{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin-bottom:20px}
+.promesa .personajes img{height:150px;width:auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
+@media(max-width:560px){.promesa .personajes img{height:120px}}
 .promesa blockquote{
   font-family:'Fredoka',sans-serif;font-size:clamp(20px,2.9vw,28px);
   line-height:1.42;font-weight:500;max-width:23em;margin:0 auto 18px;
@@ -637,7 +645,11 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
     </div>
     <div class="grid-tres">
       <div class="publico">
-        <div class="ico">👩‍👦</div>
+        <!-- Lana y Liam, los hermanitos de Purple Sheep Learning. -->
+        <div class="personajes-publico">
+          <img class="personaje-publico" src="assets/lana.png" alt="Lana" width="176" height="360">
+          <img class="personaje-publico" src="assets/liam.png" alt="Liam" width="253" height="360">
+        </div>
         <h3>Mamás y papás</h3>
         <p>
           Llevas semanas repasando tablas y no sabes si va avanzando. Esto te
@@ -645,7 +657,9 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
         </p>
       </div>
       <div class="publico">
-        <div class="ico">🍎</div>
+        <!-- Mora, personaje de Purple Sheep Learning (la maestra). -->
+        <img class="personaje-publico" src="assets/mora.png"
+             alt="Mora, personaje de Purple Sheep Learning" width="161" height="300">
         <h3>Docentes</h3>
         <p>
           Está armado para evaluar a <strong>varios niños a la vez</strong>, no
@@ -654,7 +668,9 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
         </p>
       </div>
       <div class="publico">
-        <div class="ico">🌱</div>
+        <!-- Copo, personaje de Purple Sheep Learning. -->
+        <img class="personaje-publico" src="assets/copo.png"
+             alt="Copo, personaje de Purple Sheep Learning" width="271" height="300">
         <h3>Al que las tablas se le atoraron</h3>
         <p>
           Al ser oral, no castiga a quien escribe despacio ni al que se bloquea
@@ -777,8 +793,12 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
 <section class="seccion">
   <div class="wrap">
     <div class="promesa">
-      <div class="oveja" data-mascota-respaldo>🐑</div>
-      <img class="oveja-img" data-mascota alt="" hidden>
+      <!-- Lana y Liam, personajes de Purple Sheep Learning.
+           Salen del repo VIDEOS- (purple-sheep-noviembre/public/personajes). -->
+      <div class="personajes">
+        <img src="assets/lana.png" alt="Lana, personaje de Purple Sheep Learning" width="176" height="360">
+        <img src="assets/liam.png" alt="Liam, personaje de Purple Sheep Learning" width="253" height="360">
+      </div>
       <blockquote>
         “Que cada niño que use un material de Purple Sheep Learning termine la
         actividad sintiéndose un poco más capaz que cuando la comenzó.”
@@ -1430,8 +1450,7 @@ if ('IntersectionObserver' in window &&
    Solo reemplaza al emoji si el archivo existe de verdad.
    Si falta o falla, el emoji se queda y nadie nota nada.   */
 if (CONFIG.mascota) {
-  /* Hay una ovejita en la promesa y otra en la historia.
-     Cada una tiene su emoji de respaldo justo al lado. */
+  /* Cada ovejita tiene su emoji de respaldo justo al lado. */
   $$('[data-mascota]').forEach(oveja => {
     const respaldo = oveja.parentElement.querySelector('[data-mascota-respaldo]');
     oveja.onload = () => {
