@@ -1153,13 +1153,16 @@ const CONFIG = {
     imagen: 'assets/megapack.jpg',
     precio:      '66',
     divisa:      'MXN',
-    /* Liga de Mercado Pago, verificada el 1 de octubre de 2026:
-       cobra $66 (precio con la comisión ya incluida) y no caduca.
+    /* Liga de Mercado Pago (creada el 5 de noviembre de 2026):
+       cobra $66 y sale a nombre de Purple Sheep Learning. El cliente paga
+       exactamente $66; la comisión se descuenta de lo que recibes
+       (te quedan unos $59). Los anuncios también dicen $66.
+       Si algún día cambias el precio, cambia también la liga: los
+       dos números tienen que ser iguales.
        Acepta tarjeta, efectivo y transferencia SPEI.
-
-       ⚠️ OJO: el cobro aparece a nombre de "En Plenitud de Gozo",
-       no de Purple Sheep Learning. Ver LEEME.md                  */
-    linkPago:    'https://mpago.la/2Xct97s',
+       Las ligas viejas (2Xct97s, a nombre de En Plenitud de Gozo,
+       y 2gBfq2e, de $59) ya no se usan.                         */
+    linkPago:    'https://mpago.la/1D3Jj1s',
     textoBoton:  'Lo quiero por $66',
 
     /* Cada línea es una palomita en la lista del producto. */
@@ -1174,15 +1177,7 @@ const CONFIG = {
     /* Aviso chico bajo el botón. Sirve para explicar a nombre de
        quién aparece el cobro, si no es el mismo de la marca.
        Déjalo vacío ('') si no hace falta.                       */
-    /* ⏳ TEMPORAL — quitar cuando Mercado Pago cambie el nombre.
-       Mientras el cobro salga a nombre de "En Plenitud de Gozo",
-       conviene decirlo aquí: quien llega al checkout ya lo espera
-       en vez de pensar que se equivocó de página.
-       El día que el nombre cambie, borra la frase de en medio y
-       deja solo la primera y la última.                          */
     aviso: 'Pago seguro con Mercado Pago: tarjeta, efectivo o transferencia. ' +
-           'El cobro aparece a nombre de En Plenitud de Gozo, que administra ' +
-           'los pagos de Purple Sheep Learning. ' +
            'Recibes el material en cuanto se confirme.'
   },
 
