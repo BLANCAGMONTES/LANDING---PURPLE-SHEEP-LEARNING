@@ -217,10 +217,11 @@ a{color:var(--morado)}
 /* Personaje en lugar del ícono. Copo tiene partes de la lana
    transparentes: solo se ve bien sobre fondo blanco. */
 .publico .personaje-publico{
-  display:block;height:96px;width:auto;margin-bottom:12px;
+  display:block;height:96px;width:auto;margin:0 auto 12px;
   filter:drop-shadow(0 6px 12px rgba(58,29,104,.18));
 }
-.personajes-publico{display:flex;align-items:flex-end;gap:6px}
+.personajes-publico{display:flex;justify-content:center;align-items:flex-end;gap:6px}
+.personajes-publico .personaje-publico{margin:0 0 12px}
 .personajes-publico .personaje-publico:nth-child(2){animation-delay:-2.2s}
 .publico h3{font-size:20px;margin-bottom:8px;color:var(--morado-osc)}
 .publico p{font-size:15.5px;color:var(--texto-suave)}
