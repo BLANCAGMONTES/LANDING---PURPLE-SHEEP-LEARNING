@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Gracias por tu compra! — Purple Sheep Learning</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --morado:#6d3bbd; --morado-osc:#3a1d68; --lavanda:#f4efff;
+  --verde:#25a35f; --texto:#2b2440; --texto-suave:#6b6482; --borde:#e6ddf5;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:32px 17px;
+  background:var(--lavanda);color:var(--texto);font:400 17px/1.6 "Nunito",system-ui,sans-serif}
+.tarjeta{max-width:520px;width:100%;background:#fff;border:1px solid var(--borde);border-radius:20px;
+  padding:36px 28px;text-align:center;box-shadow:0 4px 24px rgba(61,31,107,.08)}
+.oveja{width:96px;height:96px;object-fit:contain}
+h1{font:600 30px/1.2 "Fredoka",system-ui,sans-serif;color:var(--morado-osc);margin:12px 0 10px}
+p{margin:0 0 14px;color:var(--texto-suave)}
+p strong{color:var(--texto)}
+.btn{display:inline-block;margin-top:10px;padding:15px 26px;border-radius:999px;background:var(--verde);
+  color:#fff;font-weight:700;text-decoration:none}
+.btn:focus-visible{outline:3px solid var(--morado);outline-offset:3px}
+.chico{font-size:14px;margin-top:22px}
+.chico a{color:var(--morado)}
+[hidden]{display:none!important}
+</style>
+
+<!-- Píxel de Meta: el mismo de index.html -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1884735039197952');
+fbq('track', 'PageView');
+</script>
+</head>
+<body>
+
+<main class="tarjeta">
+  <img class="oveja" src="assets/ovejita.png" alt="" onerror="this.remove()">
+
+  <!-- Pago aprobado (o llegada directa desde Mercado Pago) -->
+  <section id="aprobado">
+    <h1>¡Gracias por tu compra!</h1>
+    <p>Tu <strong>MegaPack Aprende las Tablas de Multiplicar sin Llorar</strong> va en camino.</p>
+    <p>Te lo enviamos por WhatsApp en cuanto se confirme el pago. Si quieres que llegue más rápido, mándanos tu comprobante:</p>
+  </section>
+
+  <!-- Pago pendiente: OXXO o transferencia que aún no se acredita -->
+  <section id="pendiente" hidden>
+    <h1>Tu pago está en proceso</h1>
+    <p>Si pagaste en <strong>OXXO</strong> o por <strong>transferencia</strong>, Mercado Pago puede tardar un poco en confirmarlo.</p>
+    <p>En cuanto se acredite, te enviamos el MegaPack por WhatsApp. Si ya pagaste, mándanos tu comprobante:</p>
+  </section>
+
+  <!-- Pago rechazado -->
+  <section id="rechazado" hidden>
+    <h1>El pago no se completó</h1>
+    <p>Mercado Pago no pudo procesar el cobro. No se te hizo ningún cargo.</p>
+    <p>Puedes intentarlo otra vez o escribirnos y te ayudamos:</p>
+  </section>
+
+  <a class="btn" id="whatsapp" href="https://wa.me/5217296300821" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+
+  <p class="chico"><a href="./">Volver a Purple Sheep Learning</a></p>
+</main>
+
+<script>
+/* Mercado Pago regresa aquí con el resultado en la dirección,
+   por ejemplo ?collection_status=approved&payment_id=123.
+   Solo se le avisa a Meta de una compra cuando el pago está
+   aprobado, y una sola vez por pago aunque recarguen la página. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var estado = (q.get('collection_status') || q.get('status') || '').toLowerCase();
+  var pago = q.get('payment_id') || q.get('collection_id') || '';
+
+  var mensaje = 'Hola, ya pagué el MegaPack de las tablas.';
+  if (pago) mensaje += ' Mi número de operación es ' + pago + '.';
+
+  if (estado === 'pending' || estado === 'in_process') {
+    document.getElementById('aprobado').hidden = true;
+    document.getElementById('pendiente').hidden = false;
+  } else if (estado === 'rejected' || estado === 'null' || estado === 'failure') {
+    document.getElementById('aprobado').hidden = true;
+    document.getElementById('rechazado').hidden = false;
+    mensaje = 'Hola, intenté pagar el MegaPack de las tablas y no se completó el pago.';
+  }
+
+  document.getElementById('whatsapp').href =
+    'https://wa.me/5217296300821?text=' + encodeURIComponent(mensaje);
+
+  var vieneDeMercadoPago = /mercadopago|mercadolibre|mpago/i.test(document.referrer);
+  var aprobado = estado === 'approved' || (!estado && vieneDeMercadoPago);
+  if (!aprobado) return;
+
+  var clave = 'ps_compra_' + (pago || 'sin-id');
+  try { if (localStorage.getItem(clave)) return; } catch (e) {}
+
+  var datos = { content_name: 'MegaPack Aprende las Tablas de Multiplicar sin Llorar', value: 66, currency: 'MXN' };
+  try { fbq('track', 'Purchase', datos, pago ? { eventID: 'mp-' + pago } : undefined); } catch (e) {}
+  try { localStorage.setItem(clave, '1'); } catch (e) {}
+})();
+</script>
+</body>
+</html>

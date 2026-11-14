@@ -464,6 +464,26 @@ a.sello-opiniones:hover{border-color:var(--morado-2)}
   .btn{font-size:16.5px;padding:15px 24px}
 }
 </style>
+
+<!-- ====================== PÍXEL DE META ======================
+     "Píxel Purple Sheep" (portfolio Purple Sheep Learning).
+     Le avisa a Meta quién visita la página, quién pide el kit,
+     quién toca el botón de compra y quién escribe por WhatsApp,
+     para que los anuncios se le muestren a gente parecida.
+     La compra se registra en gracias.html.
+     Si algún día cambias de píxel, cambia el número aquí, en
+     gracias.html y nada más.                                   -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1884735039197952');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1884735039197952&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -1400,6 +1420,11 @@ if (productoListo) {
     a.textContent = P.textoBoton || ('Lo quiero por $' + P.precio);
     a.addEventListener('click', () => {
       registrar({ accion: 'click_producto', monto: P.precio });
+      evento('InitiateCheckout', {
+        content_name: P.nombre,
+        value: Number(P.precio),
+        currency: P.divisa || 'MXN'
+      });
     });
   });
 
@@ -1481,6 +1506,7 @@ const botonFlotante = document.getElementById('wa-flota');
 
 if (destinoFlotante) {
   botonFlotante.href = destinoFlotante;
+  botonFlotante.addEventListener('click', () => evento('Contact', { content_name: 'WhatsApp' }));
   botonFlotante.setAttribute('aria-label',
     chatDirecto ? 'Escríbenos por WhatsApp' : 'Únete a la comunidad en WhatsApp');
 } else {
@@ -1618,6 +1644,12 @@ function origenVisitante() {
    de Google, pero el dato sí llega. Por eso, si el envío no
    truena, damos el registro por bueno. La comprobación de
    verdad es abrir la hoja de cálculo y ver la fila.           */
+/* Le avisa al píxel de Meta. Si un bloqueador de anuncios impidió
+   que el píxel cargara, no pasa nada: la página sigue igual.      */
+function evento(nombre, datos) {
+  try { if (window.fbq) fbq('track', nombre, datos || {}); } catch (e) {}
+}
+
 async function registrar(datos) {
   if (!CONFIG.urlScript) {
     console.warn('Purple Sheep: falta la URL del script. No se guardó nada.', datos);
@@ -1699,6 +1731,8 @@ $$('.form-captura').forEach(form => {
             'o escríbenos por WhatsApp y te mandamos el kit a mano.');
       return;
     }
+
+    evento('Lead', { content_name: CONFIG.nombreKit });
 
     destino.textContent = datos.correo;
     form.style.display = 'none';
